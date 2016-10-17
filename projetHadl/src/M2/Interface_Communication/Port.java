@@ -1,5 +1,7 @@
 package M2.Interface_Communication;
 
-public interface Port {
+import M2.Objet_Architectural.Interface;
+
+public abstract class Port implements Interface {
 
 }
