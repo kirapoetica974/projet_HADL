@@ -1,24 +1,27 @@
 package M2.Objet_Architectural;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import M2.Objet_Architectural.Interface_Communication.Interface;
 
 /**
- * Cette interface représente l'ensemble des objets architecturaux.
- * Ils possèdent un nom et une interface.
+ * Cette interface représente l'ensemble des objets architecturaux. Ils
+ * possèdent un nom et une interface.
  * 
  * @author Rachelle & Nina
  *
  */
 public abstract class Objet_Architectural {
 
-	private Interface interfaceCommunication;
+	private List<Interface> interfaceCommunication = new ArrayList<Interface>();
 
 	private String nom;
 
 	/**
 	 * @return l'interfaceCommunication
 	 */
-	public Interface getInterfaceCommunication() {
+	public List<Interface> getInterfaceCommunication() {
 		return interfaceCommunication;
 	}
 
@@ -26,7 +29,7 @@ public abstract class Objet_Architectural {
 	 * @param interfaceCommunication
 	 *            l'interfaceCommunication à modifier
 	 */
-	public void setInterfaceCommunication(Interface interfaceCommunication) {
+	public void setInterfaceCommunication(List<Interface> interfaceCommunication) {
 		this.interfaceCommunication = interfaceCommunication;
 	}
 
