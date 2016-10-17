@@ -1,17 +1,13 @@
 package M2.Objet_Architectural;
 
-public abstract class Objet_Architectural {
-
-	public Interface interfaceCommunication;
+public interface Objet_Architectural {
 
 	/**
 	 * Lecture de l'attribut interfaceCommunication
 	 * 
 	 * @return interfaceCommunication
 	 */
-	public Interface getInterfaceCommunication() {
-		return interfaceCommunication;
-	}
+	public Interface getInterfaceCommunication();
 
 	/**
 	 * Ecriture de l'attribut interfaceCommunication
@@ -19,8 +15,5 @@ public abstract class Objet_Architectural {
 	 * @param interfaceCommunication
 	 *            l'interfaceCommunication à modifier
 	 */
-	public void setInterfaceCommunication(Interface interfaceCommunication) {
-		this.interfaceCommunication = interfaceCommunication;
-	}
-
+	public void setInterfaceCommunication(Interface interfaceCommunication);
 }
