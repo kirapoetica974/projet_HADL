@@ -1,5 +1,7 @@
 package M2.Objet_Architectural;
 
+import M2.Objet_Architectural.Interface_Communication.Interface;
+
 /**
  * Cette interface
  * 
