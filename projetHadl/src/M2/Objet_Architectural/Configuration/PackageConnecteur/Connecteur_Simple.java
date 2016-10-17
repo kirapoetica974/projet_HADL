@@ -11,6 +11,8 @@ public class Connecteur_Simple extends Connecteur {
 	private List<Role_Requis> listeRoleRequis = new ArrayList<Role_Requis>();
 	private List<Role_Fourni> listeRoleFourni = new ArrayList<Role_Fourni>();
 
+	private Glue glue;
+
 	/**
 	 * @return la listeRoleRequis
 	 */
@@ -39,6 +41,21 @@ public class Connecteur_Simple extends Connecteur {
 	 */
 	public void setListeRoleFourni(List<Role_Fourni> listeRoleFourni) {
 		this.listeRoleFourni = listeRoleFourni;
+	}
+
+	/**
+	 * @return la glue
+	 */
+	public Glue getGlue() {
+		return glue;
+	}
+
+	/**
+	 * @param glue
+	 *            la glue à modifier
+	 */
+	public void setGlue(Glue glue) {
+		this.glue = glue;
 	}
 
 }
