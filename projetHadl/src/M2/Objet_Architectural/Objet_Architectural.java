@@ -1,19 +1,34 @@
 package M2.Objet_Architectural;
 
+/**
+ * Cette interface
+ * 
+ * @author Rachelle & Nina
+ *
+ */
 public interface Objet_Architectural {
 
 	/**
-	 * Lecture de l'attribut interfaceCommunication
 	 * 
 	 * @return interfaceCommunication
 	 */
 	public Interface getInterfaceCommunication();
 
 	/**
-	 * Ecriture de l'attribut interfaceCommunication
 	 * 
 	 * @param interfaceCommunication
 	 *            l'interfaceCommunication à modifier
 	 */
 	public void setInterfaceCommunication(Interface interfaceCommunication);
+
+	/**
+	 * @return le nom
+	 */
+	public String getNom();
+
+	/**
+	 * @param nom
+	 *            le nom à modifier
+	 */
+	public void setNom(String nom);
 }

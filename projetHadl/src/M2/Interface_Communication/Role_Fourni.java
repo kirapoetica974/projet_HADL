@@ -1,5 +1,5 @@
 package M2.Interface_Communication;
 
-public abstract class Role {
+public class Role_Fourni extends Role {
 
 }
