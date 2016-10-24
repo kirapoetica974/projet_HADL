@@ -17,8 +17,10 @@ public class Lien_Attachement {
 
 	/**
 	 * Contructeur du lien attachement
+	 * 
+	 * @throws ExceptionMauvaisLien
 	 */
-	private Lien_Attachement(Role role, Port port) {
+	private Lien_Attachement(Role role, Port port) throws ExceptionMauvaisLien {
 		if (role instanceof Role_Requis
 				&& port instanceof Port_Composant_Fourni) {
 
@@ -36,7 +38,7 @@ public class Lien_Attachement {
 			this.portComposantFourni = null;
 
 		} else {
-			// Erreur
+			throw new ExceptionMauvaisLien("Mauvais lien attachement");
 		}
 	}
 
