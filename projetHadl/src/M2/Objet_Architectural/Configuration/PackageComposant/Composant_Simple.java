@@ -25,6 +25,14 @@ public class Composant_Simple extends Composant {
 	}
 
 	/**
+	 * @param propriete
+	 *            ajout de propriete dans listePropriete
+	 */
+	public void addPropriete(Propriete propriete) {
+		this.listePropriete.add(propriete);
+	}
+
+	/**
 	 * @return la listeContrainte
 	 */
 	public List<Contrainte> getListeContrainte() {
@@ -37,6 +45,14 @@ public class Composant_Simple extends Composant {
 	 */
 	public void setListeContrainte(List<Contrainte> listeContrainte) {
 		this.listeContrainte = listeContrainte;
+	}
+
+	/**
+	 * @param contrainte
+	 *            ajout de contrainte dans listeContrainte
+	 */
+	public void addContrainte(Contrainte contrainte) {
+		this.listeContrainte.add(contrainte);
 	}
 
 }

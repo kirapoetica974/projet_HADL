@@ -27,6 +27,14 @@ public abstract class Connecteur_Simple extends Connecteur {
 	}
 
 	/**
+	 * @param role
+	 *            ajout de role dans listeRole
+	 */
+	public void addRole(Role role) {
+		this.listeRole.add(role);
+	}
+
+	/**
 	 * @return la glue
 	 */
 	public Glue getGlue() {

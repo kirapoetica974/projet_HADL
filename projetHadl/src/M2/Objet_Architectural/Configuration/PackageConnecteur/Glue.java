@@ -28,6 +28,14 @@ public class Glue {
 	}
 
 	/**
+	 * @param roleRequis
+	 *            ajout de roleRequis dans listeRoleRequis
+	 */
+	public void addRoleRequis(Role_Requis roleRequis) {
+		this.listeRoleRequis.add(roleRequis);
+	}
+
+	/**
 	 * @return listeRoleFourni
 	 */
 	public List<Role_Fourni> getListeRoleFourni() {
@@ -40,6 +48,14 @@ public class Glue {
 	 */
 	public void setListeRoleFourni(List<Role_Fourni> listeRoleFourni) {
 		this.listeRoleFourni = listeRoleFourni;
+	}
+
+	/**
+	 * @param roleFourni
+	 *            ajout de roleFourni dans listeRoleFourni
+	 */
+	public void addRoleFourni(Role_Fourni roleFourni) {
+		this.listeRoleFourni.add(roleFourni);
 	}
 
 }

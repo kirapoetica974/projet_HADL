@@ -14,7 +14,7 @@ import M2.Objet_Architectural.Interface_Communication.Interface;
  */
 public abstract class Objet_Architectural {
 
-	private List<Interface> interfaceCommunication = new ArrayList<Interface>();
+	private List<Interface> listeInterfaceCommunication = new ArrayList<Interface>();
 
 	private String nom;
 
@@ -22,15 +22,25 @@ public abstract class Objet_Architectural {
 	 * @return l'interfaceCommunication
 	 */
 	public List<Interface> getInterfaceCommunication() {
-		return interfaceCommunication;
+		return listeInterfaceCommunication;
+	}
+
+	/**
+	 * @param listeInterfaceCommunication
+	 *            la liste d'interfaces de communication à modifier
+	 */
+	public void setInterfaceCommunication(
+			List<Interface> listeInterfaceCommunication) {
+		this.listeInterfaceCommunication = listeInterfaceCommunication;
 	}
 
 	/**
 	 * @param interfaceCommunication
-	 *            l'interfaceCommunication à modifier
+	 *            ajout de interfaceCommunication dans
+	 *            listeInterfaceCommunication
 	 */
-	public void setInterfaceCommunication(List<Interface> interfaceCommunication) {
-		this.interfaceCommunication = interfaceCommunication;
+	public void addInterfaceCommunication(Interface interfaceCommunication) {
+		this.listeInterfaceCommunication.add(interfaceCommunication);
 	}
 
 	/**
