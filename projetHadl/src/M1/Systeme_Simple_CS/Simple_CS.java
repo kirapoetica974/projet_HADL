@@ -6,6 +6,8 @@ import M2.Objet_Architectural.Configuration.Configuration;
 public class Simple_CS extends Configuration {
 
 	private Client client;
+	private Simple_CS_Entree portSimpleCsEntree;
+	private Simple_CS_Sortie portSimpleCsSortie;
 
 	public Simple_CS(Client client) {
 		this.client = client;
