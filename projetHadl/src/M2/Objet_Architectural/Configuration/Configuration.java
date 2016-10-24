@@ -29,6 +29,14 @@ public class Configuration extends Objet_Architectural {
 	}
 
 	/**
+	 * @param objetArchitectural
+	 *            l'objet architectural à ajouter à la liste
+	 */
+	public void addObjetArchitectural(Objet_Architectural objetArchitectural) {
+		this.listeObjetArchitectural.add(objetArchitectural);
+	}
+
+	/**
 	 * @return listeLienBinding
 	 */
 	public List<Lien_Binding> getListeLienBinding() {
@@ -41,6 +49,14 @@ public class Configuration extends Objet_Architectural {
 	 */
 	public void setListeLienBinding(List<Lien_Binding> listeLienBinding) {
 		this.listeLienBinding = listeLienBinding;
+	}
+
+	/**
+	 * @param listeLienBinding
+	 *            le lien binding à ajouter à la liste
+	 */
+	public void addLienBinding(Lien_Binding lienBinding) {
+		this.listeLienBinding.add(lienBinding);
 	}
 
 }
