@@ -3,44 +3,27 @@ package M2.Objet_Architectural.Configuration.PackageConnecteur;
 import java.util.ArrayList;
 import java.util.List;
 
-import M2.Objet_Architectural.Interface_Communication.Role_Fourni;
-import M2.Objet_Architectural.Interface_Communication.Role_Requis;
+import M2.Objet_Architectural.Interface_Communication.Role;
 
 public class Connecteur_Simple extends Connecteur {
 
-	private List<Role_Requis> listeRoleRequis = new ArrayList<Role_Requis>();
-	private List<Role_Fourni> listeRoleFourni = new ArrayList<Role_Fourni>();
+	private List<Role> listeRole = new ArrayList<Role>();
 
 	private Glue glue;
 
 	/**
-	 * @return la listeRoleRequis
+	 * @return listeRole
 	 */
-	public List<Role_Requis> getListeRoleRequis() {
-		return listeRoleRequis;
+	public List<Role> getListeRole() {
+		return listeRole;
 	}
 
 	/**
-	 * @param listeRoleRequis
-	 *            la listeRoleRequis à modifier
+	 * @param listeRole
+	 *            la liste des roles à modifier
 	 */
-	public void setListeRoleRequis(List<Role_Requis> listeRoleRequis) {
-		this.listeRoleRequis = listeRoleRequis;
-	}
-
-	/**
-	 * @return la listeRoleFourni
-	 */
-	public List<Role_Fourni> getListeRoleFourni() {
-		return listeRoleFourni;
-	}
-
-	/**
-	 * @param listeRoleFourni
-	 *            la listeRoleFourni à modifier
-	 */
-	public void setListeRoleFourni(List<Role_Fourni> listeRoleFourni) {
-		this.listeRoleFourni = listeRoleFourni;
+	public void setListeRole(List<Role> listeRole) {
+		this.listeRole = listeRole;
 	}
 
 	/**
