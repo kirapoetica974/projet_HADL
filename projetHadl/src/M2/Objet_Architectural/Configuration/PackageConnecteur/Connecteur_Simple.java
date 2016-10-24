@@ -6,7 +6,7 @@ import java.util.List;
 import M2.Objet_Architectural.Interface_Communication.Role_Fourni;
 import M2.Objet_Architectural.Interface_Communication.Role_Requis;
 
-public class Connecteur_Simple extends Connecteur {
+public abstract class Connecteur_Simple extends Connecteur {
 
 	private List<Role_Requis> listeRoleRequis = new ArrayList<Role_Requis>();
 	private List<Role_Fourni> listeRoleFourni = new ArrayList<Role_Fourni>();
