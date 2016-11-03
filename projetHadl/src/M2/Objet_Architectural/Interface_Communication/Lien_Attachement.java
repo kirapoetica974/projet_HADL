@@ -20,7 +20,7 @@ public class Lien_Attachement {
 	 * 
 	 * @throws ExceptionMauvaisLien
 	 */
-	private Lien_Attachement(Role role, Port port) throws ExceptionMauvaisLien {
+	public Lien_Attachement(Role role, Port port) throws ExceptionMauvaisLien {
 		if (role instanceof Role_Requis
 				&& port instanceof Port_Composant_Fourni) {
 
