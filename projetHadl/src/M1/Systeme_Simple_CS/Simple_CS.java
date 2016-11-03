@@ -13,17 +13,32 @@ public class Simple_CS extends Configuration {
 	private Simple_CS_Sortie portSimpleCsSortie;
 	private Rpc rpc;
 
-	public Simple_CS(Client client, Simple_CS_Entree scEntree,
-			Simple_CS_Sortie scSortie) {
+	/*
+	 * public Simple_CS(Client client, Simple_CS_Entree scEntree,
+	 * Simple_CS_Sortie scSortie) {
+	 */
+
+	public Simple_CS(Client client, Serveur serveur, Rpc rpc) {
 		super();
 
 		this.setNom("Simple CS");
 
 		this.client = new Client();
 		this.serveur = new Serveur();
+		this.rpc = new Rpc();
+
+		if (null != client) {
+			this.client = client;
+		}
+		if (null != serveur) {
+			this.serveur = serveur;
+		}
+		if (null != rpc) {
+			this.rpc = rpc;
+		}
+
 		this.portSimpleCsEntree = new Simple_CS_Entree();
 		this.portSimpleCsSortie = new Simple_CS_Sortie();
-		this.rpc = new Rpc();
 
 		this.addObjetArchitectural(this.client);
 		this.addObjetArchitectural(this.serveur);
