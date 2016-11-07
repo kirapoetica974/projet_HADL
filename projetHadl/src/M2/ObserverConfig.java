@@ -2,6 +2,7 @@ package M2;
 
 import java.util.List;
 
+import M2.Objet_Architectural.Objet_Architectural;
 import M2.Objet_Architectural.Configuration.Configuration;
 import M2.Objet_Architectural.Interface_Communication.Lien_Attachement;
 import M2.Objet_Architectural.Interface_Communication.Port;
@@ -78,6 +79,34 @@ public class ObserverConfig {
 		if (!listAttachements.equals(null)) {
 			lienTransporteur.transmetDonnee();
 		}
+	}
+
+	/**
+	 * Méthode qui permet d'informer au connecteur, au composant ou à la
+	 * configuration qu'il doit transmettre la donnée
+	 * 
+	 * @param port
+	 *            le port qui a recu l'information
+	 * @throws ExceptionDonneeIncorrecte
+	 */
+	public void notifierEntreeDonnee(Object port)
+			throws ExceptionDonneeIncorrecte {
+
+		// Si le port est un rôle
+		// Si le port est un port_composant
+		// Si le port est un port_configuration
+		List<Objet_Architectural> listeObjetArchitectural = configuration
+				.getListeObjetArchitectural();
+
+		Objet_Architectural objetArchitectural = null;
+		Boolean objetArchitecturalTrouve = false;
+		int noObjetArchitectural = 0;
+
+		while (!objetArchitecturalTrouve
+				|| noObjetArchitectural < listeObjetArchitectural.size()) {
+			// listeObjetArchitectural.get(noObjetArchitectural);
+		}
+
 	}
 
 	/**
