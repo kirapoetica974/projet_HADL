@@ -9,8 +9,8 @@ public class Simple_CS extends Configuration {
 
 	private Client client;
 	private Serveur serveur;
-	private Simple_CS_Entree portSimpleCsEntree;
-	private Simple_CS_Sortie portSimpleCsSortie;
+	private Simple_CS_Requis portSimpleCsEntree;
+	private Simple_CS_Fourni portSimpleCsSortie;
 	private Rpc rpc;
 
 	/*
@@ -37,8 +37,8 @@ public class Simple_CS extends Configuration {
 			this.rpc = rpc;
 		}
 
-		this.portSimpleCsEntree = new Simple_CS_Entree();
-		this.portSimpleCsSortie = new Simple_CS_Sortie();
+		this.portSimpleCsEntree = new Simple_CS_Requis();
+		this.portSimpleCsSortie = new Simple_CS_Fourni();
 
 		this.addObjetArchitectural(this.client);
 		this.addObjetArchitectural(this.serveur);

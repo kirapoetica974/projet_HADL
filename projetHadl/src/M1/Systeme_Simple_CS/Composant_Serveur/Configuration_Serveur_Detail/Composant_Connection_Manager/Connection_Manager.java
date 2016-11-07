@@ -4,7 +4,7 @@ import M2.Objet_Architectural.Configuration.PackageComposant.Composant_Simple;
 
 public class Connection_Manager extends Composant_Simple {
 
-	private External_Socket externalSocket;
+	private External_Socket_Fourni externalSocket;
 	private Receive_DB_Query receiveDBQuery;
 	private Receive_Security_Check receiveSecurityCheck;
 	private Send_DB_Query sendDBQuery;
@@ -13,7 +13,7 @@ public class Connection_Manager extends Composant_Simple {
 	public Connection_Manager() {
 		super();
 
-		this.externalSocket = new External_Socket();
+		this.externalSocket = new External_Socket_Fourni();
 		this.receiveDBQuery = new Receive_DB_Query();
 		this.receiveSecurityCheck = new Receive_Security_Check();
 		this.sendDBQuery = new Send_DB_Query();
