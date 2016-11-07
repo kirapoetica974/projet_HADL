@@ -1,5 +1,7 @@
 package M2.Objet_Architectural.Interface_Communication;
 
+import M2.ObserverConfig;
+
 /**
  * Le lien attachement relie soit un rôle fourni avec un port requis d'un
  * composant, soit un rôle requis avec un port fourni d'un composant. Ce
@@ -7,13 +9,15 @@ package M2.Objet_Architectural.Interface_Communication;
  */
 public class Lien_Attachement {
 
-	private Role_Requis roleRequis;
+	private Role_Requis roleRequis = null;
 
-	private Port_Composant_Fourni portComposantFourni;
+	private Port_Composant_Fourni portComposantFourni = null;
 
-	private Role_Fourni roleFourni;
+	private Role_Fourni roleFourni = null;
 
-	private Port_Composant_Requis portComposantRequis;
+	private Port_Composant_Requis portComposantRequis = null;
+
+	private ObserverConfig observer = ObserverConfig.getInstance();
 
 	/**
 	 * Contructeur du lien attachement
@@ -103,7 +107,20 @@ public class Lien_Attachement {
 	}
 
 	public void transmetDonnee() {
-		// TODO Auto-generated method stub
+		String donnee = null;
+		if (this.portComposantRequis != null && this.roleFourni != null) {
+			donnee = this.portComposantRequis.getElmtStocke();
+			if (donnee != null) {
+				this.roleFourni.setElmtStocke(donnee);
+				observer.notifierEntreeDonnee(this.roleFourni);
+			}
+		} else if (this.portComposantFourni != null && this.roleRequis != null) {
+			donnee = this.roleRequis.getElmtStocke();
+			if (donnee != null) {
+				this.portComposantFourni.setElmtStocke(donnee);
+				observer.notifierEntreeDonnee(this.portComposantFourni);
+			}
+		}
 
 	}
 }
