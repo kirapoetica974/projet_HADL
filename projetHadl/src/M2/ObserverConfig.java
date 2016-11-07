@@ -61,21 +61,30 @@ public class ObserverConfig {
 		}
 
 		if (!listAttachements.equals(null)) {
-			lienTransporteur.transmetDonnee();
+			lienTransporteur.transmetDonnee(donneeATransmettre);
 		}
 	}
 
-	private String recupDonneePort(Object port) {
+	/**
+	 * @param port
+	 *            un port
+	 * @return la valeur de la donnée stockée dans le port
+	 * @throws ExceptionDonneeIncorrecte
+	 *             en cas d'erreur de la donnee
+	 */
+	private String recupDonneePort(Object port)
+			throws ExceptionDonneeIncorrecte {
 		String donnee = null;
 		if (port instanceof Port) {
 			Port p = (Port) port;
 			donnee = p.getElmtStocke();
-		}
-		else if(port instanceof Role) {
+		} else if (port instanceof Role) {
 			Role r = (Role) port;
 			donnee = r.getElmtStocke();
+		} else {
+			new ExceptionDonneeIncorrecte();
 		}
-		else ();
+		return donnee;
 	}
 
 	/**
