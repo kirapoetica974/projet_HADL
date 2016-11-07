@@ -40,8 +40,10 @@ public class ObserverConfig {
 	 * 
 	 * @param port
 	 *            le port qui a recu l'information
+	 * @throws ExceptionDonneeIncorrecte
 	 */
-	public void notifier(Object port) {
+	public void notifierSortieDonnee(Object port)
+			throws ExceptionDonneeIncorrecte {
 		List<Lien_Attachement> listAttachements = configuration
 				.getListLienAttachements();
 
@@ -61,7 +63,7 @@ public class ObserverConfig {
 		}
 
 		if (!listAttachements.equals(null)) {
-			lienTransporteur.transmetDonnee(donneeATransmettre);
+			lienTransporteur.transmetDonnee();
 		}
 	}
 

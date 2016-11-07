@@ -101,4 +101,9 @@ public class Lien_Attachement {
 	public void setPortComposantRequis(Port_Composant_Requis portComposantRequis) {
 		this.portComposantRequis = portComposantRequis;
 	}
+
+	public void transmetDonnee() {
+		// TODO Auto-generated method stub
+
+	}
 }
