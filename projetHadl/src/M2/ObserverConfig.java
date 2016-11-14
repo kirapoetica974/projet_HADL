@@ -148,7 +148,7 @@ public class ObserverConfig {
 
 				for (Role_Fourni roleFourni : listeRoleFourni) {
 					if (roleFourni.equals(port)) {
-						// glue.transmetDonnee
+						glue.transmetDonnee();
 					}
 				}
 			}
@@ -156,7 +156,7 @@ public class ObserverConfig {
 
 		// Objet trouve
 		else {
-			// objetArchitectural.transmetDonnee
+			objetArchitectural.transmetDonnee();
 		}
 
 	}
