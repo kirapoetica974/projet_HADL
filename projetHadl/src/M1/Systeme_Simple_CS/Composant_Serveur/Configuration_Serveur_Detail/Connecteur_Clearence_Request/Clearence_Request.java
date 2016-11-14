@@ -6,30 +6,10 @@ public class Clearence_Request extends Connecteur_Simple_Explicite {
 
 	private Clearence_Request_Glue clearenceRequestGlue;
 
-	public Clearence_Request(Clearence_Request_Glue clearenceRequestGlue) {
+	public Clearence_Request() {
 		super();
-
-		this.setClearenceRequestGlue(new Clearence_Request_Glue());
-
-		if (null != clearenceRequestGlue) {
-			this.setClearenceRequestGlue(clearenceRequestGlue);
-		}
-	}
-
-	/**
-	 * @return clearenceRequestGlue
-	 */
-	public Clearence_Request_Glue getClearenceRequestGlue() {
-		return clearenceRequestGlue;
-	}
-
-	/**
-	 * @param clearenceRequestGlue
-	 *            : clearenceRequestGlue à modifier
-	 */
-	public void setClearenceRequestGlue(
-			Clearence_Request_Glue clearenceRequestGlue) {
-		this.clearenceRequestGlue = clearenceRequestGlue;
+		this.clearenceRequestGlue = new Clearence_Request_Glue();
+		this.setGlue(this.clearenceRequestGlue);
 	}
 
 }

@@ -80,9 +80,9 @@ public class Configuration extends Objet_Architectural {
 
 	/**
 	 * @param lienAttachement
-	 *            le liens Attachement à ajouter
+	 *            le lien Attachement à ajouter
 	 */
-	public void addListLienAttachements(Lien_Attachement lienAttachement) {
+	public void addLienAttachement(Lien_Attachement lienAttachement) {
 		this.listLienAttachements.add(lienAttachement);
 	}
 

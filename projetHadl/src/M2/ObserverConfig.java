@@ -2,6 +2,7 @@ package M2;
 
 import java.util.List;
 
+import M1.Systeme_Simple_CS.ExceptionObserverNonConfigure;
 import M2.Objet_Architectural.Objet_Architectural;
 import M2.Objet_Architectural.Configuration.Configuration;
 import M2.Objet_Architectural.Configuration.PackageConnecteur.Connecteur_Simple;
@@ -17,14 +18,21 @@ import M2.Objet_Architectural.Interface_Communication.Role_Requis;
 
 public class ObserverConfig {
 
-	Configuration configuration;
+	private static Configuration configuration;
 
 	/** L'instance statique */
 	private static ObserverConfig instance;
 
 	public static ObserverConfig getInstance() {
-		if (null == instance) { // Premier appel
-			instance = new ObserverConfig();
+		if (null == instance && configuration != null) { // Premier appel
+			instance = new ObserverConfig(configuration);
+		} else if (configuration != null) {
+			try {
+				throw new ExceptionObserverNonConfigure(
+						"L'observeur doit contenir une configuration");
+			} catch (ExceptionObserverNonConfigure e) {
+				e.printStackTrace();
+			}
 		}
 		return instance;
 	}
@@ -61,6 +69,8 @@ public class ObserverConfig {
 	 */
 	public void notifierSortieDonnee(Object port)
 			throws ExceptionDonneeIncorrecte {
+
+		System.out.println("Signal donnee arrivee");
 		List<Lien_Attachement> listAttachements = configuration
 				.getListLienAttachements();
 
@@ -70,7 +80,7 @@ public class ObserverConfig {
 		Boolean lienAttachementTrouve = false;
 		int noLien = 0;
 
-		while (!lienAttachementTrouve || noLien < listAttachements.size()) {
+		while (!lienAttachementTrouve && noLien < listAttachements.size()) {
 			lienAttachementTrouve = verifierLienAttachement(port,
 					listAttachements.get(noLien));
 			if (lienAttachementTrouve) {
@@ -79,7 +89,7 @@ public class ObserverConfig {
 			noLien++;
 		}
 
-		if (!listAttachements.equals(null)) {
+		if (!lienTransporteur.equals(null)) {
 			lienTransporteur.transmetDonnee();
 		}
 	}
