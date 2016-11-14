@@ -4,6 +4,9 @@ import java.util.List;
 
 import M2.Objet_Architectural.Objet_Architectural;
 import M2.Objet_Architectural.Configuration.Configuration;
+import M2.Objet_Architectural.Configuration.PackageConnecteur.Connecteur_Simple;
+import M2.Objet_Architectural.Configuration.PackageConnecteur.Glue;
+import M2.Objet_Architectural.Interface_Communication.Interface;
 import M2.Objet_Architectural.Interface_Communication.Lien_Attachement;
 import M2.Objet_Architectural.Interface_Communication.Port;
 import M2.Objet_Architectural.Interface_Communication.Port_Composant_Requis;
@@ -99,12 +102,61 @@ public class ObserverConfig {
 				.getListeObjetArchitectural();
 
 		Objet_Architectural objetArchitectural = null;
-		Boolean objetArchitecturalTrouve = false;
+		Boolean interfaceCommunicationTrouve = false;
 		int noObjetArchitectural = 0;
+		int noInterfaceCommunication = 0;
 
-		while (!objetArchitecturalTrouve
+		while (!interfaceCommunicationTrouve
 				&& noObjetArchitectural < listeObjetArchitectural.size()) {
-			// listeObjetArchitectural.get(noObjetArchitectural).getInterfaceCommunication()
+
+			// Un objet architectural possède une liste d'interfaces de
+			// communication (ports, roles)
+			List<Interface> listeInterfaceCommunication = listeObjetArchitectural
+					.get(noObjetArchitectural).getInterfaceCommunication();
+
+			// Il faut trouver quelle interface correspond au port
+			while (!interfaceCommunicationTrouve
+					&& noInterfaceCommunication < listeInterfaceCommunication
+							.size()) {
+				Interface interfaceCommunication = listeInterfaceCommunication
+						.get(noInterfaceCommunication);
+
+				if (interfaceCommunication.equals(port)) {
+					interfaceCommunicationTrouve = true;
+					objetArchitectural = listeObjetArchitectural
+							.get(noObjetArchitectural);
+				}
+				noInterfaceCommunication++;
+			}
+
+			noObjetArchitectural++;
+		}
+
+		// On regarde la liste des glues
+		if (null == objetArchitectural) {
+			noObjetArchitectural = 0;
+			while (!interfaceCommunicationTrouve
+					&& noObjetArchitectural < listeObjetArchitectural.size())
+
+				objetArchitectural = listeObjetArchitectural
+						.get(noObjetArchitectural);
+
+			// Est ce que le port correspond au role de cette glue ?
+			if (objetArchitectural instanceof Connecteur_Simple) {
+				Glue glue = ((Connecteur_Simple) objetArchitectural).getGlue();
+				List<Role_Fourni> listeRoleFourni = glue.getListeRoleFourni();
+
+				for (Role_Fourni roleFourni : listeRoleFourni) {
+					if (roleFourni.equals(port)) {
+						// glue.transmetDonnee
+					}
+				}
+			}
+		}
+
+		// Objet trouve
+		else {
+			// objetArchitectural.transmetDonnee
 		}
 
 	}
