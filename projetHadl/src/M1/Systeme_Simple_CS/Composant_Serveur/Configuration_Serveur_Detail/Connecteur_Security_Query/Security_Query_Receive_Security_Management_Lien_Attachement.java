@@ -7,17 +7,18 @@ import M2.Objet_Architectural.Interface_Communication.Lien_Attachement;
 public class Security_Query_Receive_Security_Management_Lien_Attachement extends
 		Lien_Attachement {
 
-	private Security_Query_Caller securityQueryCaller;
-	private Receive_Security_Management receiveSecurityManagement;
+	private static Security_Query_Caller securityQueryCaller;
+	private static Receive_Security_Management receiveSecurityManagement;
 
-	public Security_Query_Receive_Security_Management_Lien_Attachement(
-			Security_Query_Caller securityQueryCaller,
-			Receive_Security_Management receiveSecurityManagement)
+	public Security_Query_Receive_Security_Management_Lien_Attachement()
 			throws ExceptionMauvaisLien {
 		super(securityQueryCaller, receiveSecurityManagement);
 
-		this.securityQueryCaller = securityQueryCaller;
-		this.receiveSecurityManagement = receiveSecurityManagement;
+		this.securityQueryCaller = new Security_Query_Caller();
+		this.setRoleRequis(securityQueryCaller);
+
+		this.receiveSecurityManagement = new Receive_Security_Management();
+		this.setPortComposantFourni(receiveSecurityManagement);
 	}
 
 }

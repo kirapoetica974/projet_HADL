@@ -9,14 +9,15 @@ public class Send_Security_Management_Lien_Attachement extends Lien_Attachement 
 	private static Send_Security_Management sendSecurityManagement;
 	private static Security_Query_Called securityQueryCalled;
 
-	public Send_Security_Management_Lien_Attachement(
-			Send_Security_Management sendSecurityManagement,
-			Security_Query_Called securityQueryCalled)
+	public Send_Security_Management_Lien_Attachement()
 			throws ExceptionMauvaisLien {
 
 		super(securityQueryCalled, sendSecurityManagement);
 
-		this.sendSecurityManagement = sendSecurityManagement;
-		this.securityQueryCalled = securityQueryCalled;
+		this.sendSecurityManagement = new Send_Security_Management();
+		this.setPortComposantRequis(sendSecurityManagement);
+
+		this.securityQueryCalled = new Security_Query_Called();
+		this.setRoleFourni(securityQueryCalled);
 	}
 }

@@ -9,11 +9,13 @@ public class Send_Query_Int_Lien_Attachement extends Lien_Attachement {
 	private static Send_Query_Int sendQueryInt;
 	private static SQL_Request_Called sqlRequestCalled;
 
-	public Send_Query_Int_Lien_Attachement(Send_Query_Int sendQueryInt,
-			SQL_Request_Called sqlRequestCalled) throws ExceptionMauvaisLien {
+	public Send_Query_Int_Lien_Attachement() throws ExceptionMauvaisLien {
 		super(sqlRequestCalled, sendQueryInt);
 
-		this.sendQueryInt = sendQueryInt;
-		this.sqlRequestCalled = sqlRequestCalled;
+		this.sendQueryInt = new Send_Query_Int();
+		this.setPortComposantRequis(sendQueryInt);
+
+		this.sqlRequestCalled = new SQL_Request_Called();
+		this.setRoleFourni(sqlRequestCalled);
 	}
 }

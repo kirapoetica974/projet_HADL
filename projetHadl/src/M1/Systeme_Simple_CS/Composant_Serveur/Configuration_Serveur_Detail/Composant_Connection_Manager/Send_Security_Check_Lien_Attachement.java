@@ -9,13 +9,13 @@ public class Send_Security_Check_Lien_Attachement extends Lien_Attachement {
 	private static Send_Security_Check sendSecurityCheck;
 	private static Clearence_Request_Called clearenceRequestCalled;
 
-	public Send_Security_Check_Lien_Attachement(
-			Send_Security_Check sendSecurityCheck,
-			Clearence_Request_Called clearenceRequestCalled)
-			throws ExceptionMauvaisLien {
+	public Send_Security_Check_Lien_Attachement() throws ExceptionMauvaisLien {
 		super(clearenceRequestCalled, sendSecurityCheck);
 
-		this.sendSecurityCheck = sendSecurityCheck;
-		this.clearenceRequestCalled = clearenceRequestCalled;
+		this.sendSecurityCheck = new Send_Security_Check();
+		this.setPortComposantRequis(sendSecurityCheck);
+
+		this.clearenceRequestCalled = new Clearence_Request_Called();
+		this.setRoleFourni(clearenceRequestCalled);
 	}
 }

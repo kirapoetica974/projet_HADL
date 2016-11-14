@@ -7,15 +7,17 @@ import M2.Objet_Architectural.Interface_Communication.Lien_Attachement;
 public class SQL_Request_Caller_Receive_Query_Int_Lien_Attachement extends
 		Lien_Attachement {
 
-	private SQL_Request_Caller sqlRequestCaller;
-	private Receive_Query_Int receiveQueryInt;
+	private static SQL_Request_Caller sqlRequestCaller;
+	private static Receive_Query_Int receiveQueryInt;
 
-	public SQL_Request_Caller_Receive_Query_Int_Lien_Attachement(
-			SQL_Request_Caller sqlRequestCaller,
-			Receive_Query_Int receiveQueryInt) throws ExceptionMauvaisLien {
+	public SQL_Request_Caller_Receive_Query_Int_Lien_Attachement()
+			throws ExceptionMauvaisLien {
 		super(sqlRequestCaller, receiveQueryInt);
 
-		this.sqlRequestCaller = sqlRequestCaller;
-		this.receiveQueryInt = receiveQueryInt;
+		this.sqlRequestCaller = new SQL_Request_Caller();
+		this.setRoleRequis(sqlRequestCaller);
+
+		this.receiveQueryInt = new Receive_Query_Int();
+		this.setPortComposantFourni(receiveQueryInt);
 	}
 }
