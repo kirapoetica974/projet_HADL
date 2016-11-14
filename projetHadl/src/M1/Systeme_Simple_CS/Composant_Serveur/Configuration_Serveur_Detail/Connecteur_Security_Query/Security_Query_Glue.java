@@ -12,6 +12,11 @@ public class Security_Query_Glue extends Glue {
 
 		this.securityQueryCalled = new Security_Query_Called();
 		this.securityQueryCaller = new Security_Query_Caller();
+
+		this.addRoleFourni(this.securityQueryCalled);
+		this.addRoleRequis(this.securityQueryCaller);
+		this.addLienFourniRequis(this.securityQueryCalled,
+				this.securityQueryCaller);
 	}
 
 	/**

@@ -7,8 +7,8 @@ import M2.Objet_Architectural.Interface_Communication.Lien_Attachement;
 public class Security_Query_Receive_Security_Management_Lien_Attachement extends
 		Lien_Attachement {
 
-	private static Security_Query_Caller securityQueryCaller;
-	private static Receive_Security_Management receiveSecurityManagement;
+	private Security_Query_Caller securityQueryCaller;
+	private Receive_Security_Management receiveSecurityManagement;
 
 	public Security_Query_Receive_Security_Management_Lien_Attachement(
 			Security_Query_Caller securityQueryCaller,

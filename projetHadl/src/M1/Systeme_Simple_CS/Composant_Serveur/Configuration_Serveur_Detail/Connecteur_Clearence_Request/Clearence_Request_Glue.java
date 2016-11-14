@@ -12,6 +12,11 @@ public class Clearence_Request_Glue extends Glue {
 
 		this.clearenceRequestCaller = new Clearence_Request_Caller();
 		this.clearenceRequestCalled = new Clearence_Request_Called();
+
+		this.addRoleFourni(this.clearenceRequestCalled);
+		this.addRoleRequis(this.clearenceRequestCaller);
+		this.addLienFourniRequis(this.clearenceRequestCalled,
+				this.clearenceRequestCaller);
 	}
 
 	/**

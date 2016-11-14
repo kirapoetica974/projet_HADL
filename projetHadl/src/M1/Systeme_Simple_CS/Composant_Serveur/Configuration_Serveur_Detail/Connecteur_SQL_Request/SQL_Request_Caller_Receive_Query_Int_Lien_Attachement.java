@@ -7,8 +7,8 @@ import M2.Objet_Architectural.Interface_Communication.Lien_Attachement;
 public class SQL_Request_Caller_Receive_Query_Int_Lien_Attachement extends
 		Lien_Attachement {
 
-	private static SQL_Request_Caller sqlRequestCaller;
-	private static Receive_Query_Int receiveQueryInt;
+	private SQL_Request_Caller sqlRequestCaller;
+	private Receive_Query_Int receiveQueryInt;
 
 	public SQL_Request_Caller_Receive_Query_Int_Lien_Attachement(
 			SQL_Request_Caller sqlRequestCaller,

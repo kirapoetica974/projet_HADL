@@ -7,8 +7,8 @@ import M2.Objet_Architectural.Interface_Communication.Lien_Attachement;
 public class Clearence_Request_Caller_Receive_Security_Auth_Lien_Attachement
 		extends Lien_Attachement {
 
-	private static Clearence_Request_Caller clearenceRequestCaller;
-	private static Receive_Security_Auth receiveSecurityAuth;
+	private Clearence_Request_Caller clearenceRequestCaller;
+	private Receive_Security_Auth receiveSecurityAuth;
 
 	public Clearence_Request_Caller_Receive_Security_Auth_Lien_Attachement(
 			Clearence_Request_Caller clearenceRequestCaller,

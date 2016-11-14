@@ -12,6 +12,10 @@ public class SQL_Request_Glue extends Glue {
 
 		this.sqlRequestCalled = new SQL_Request_Called();
 		this.sqlRequestCaller = new SQL_Request_Caller();
+
+		this.addRoleFourni(this.sqlRequestCalled);
+		this.addRoleRequis(this.sqlRequestCaller);
+		this.addLienFourniRequis(this.sqlRequestCalled, this.sqlRequestCaller);
 	}
 
 	/**
