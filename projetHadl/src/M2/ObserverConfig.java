@@ -16,6 +16,19 @@ public class ObserverConfig {
 
 	Configuration configuration;
 
+	/** L'instance statique */
+	private static ObserverConfig instance;
+
+	public static ObserverConfig getInstance() {
+		if (null == instance) { // Premier appel
+			instance = new ObserverConfig();
+		}
+		return instance;
+	}
+
+	public ObserverConfig() {
+	}
+
 	public ObserverConfig(Configuration config) {
 		this.configuration = config;
 	}
