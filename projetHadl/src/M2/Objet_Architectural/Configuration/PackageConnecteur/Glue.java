@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import M2.Objet_Architectural.Interface_Communication.Port;
 import M2.Objet_Architectural.Interface_Communication.Role_Fourni;
 import M2.Objet_Architectural.Interface_Communication.Role_Requis;
 
@@ -89,7 +90,7 @@ public class Glue {
 		this.liensFourniRequis.put(roleFourni, roleRequis);
 	}
 
-	public void transmetDonnee() {
+	public void transmetDonnee(Port portEntree) {
 
 	}
 
