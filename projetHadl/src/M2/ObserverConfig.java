@@ -1,6 +1,8 @@
 package M2;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import M1.Systeme_Simple_CS.ExceptionObserverNonConfigure;
 import M2.Objet_Architectural.Objet_Architectural;
@@ -19,6 +21,8 @@ import M2.Objet_Architectural.Interface_Communication.Role_Requis;
 public class ObserverConfig {
 
 	private static Configuration configuration;
+	private final static Logger logger = Logger.getLogger(Logger.class
+			.getName());
 
 	/** L'instance statique */
 	private static ObserverConfig instance;
@@ -69,8 +73,8 @@ public class ObserverConfig {
 	 */
 	public void notifierSortieDonnee(Object port)
 			throws ExceptionDonneeIncorrecte {
-
-		System.out.println("Signal donnee arrivee");
+		logger.log(Level.INFO,
+				"Signal de sortie de donnée reçu, traitement en cours.");
 		List<Lien_Attachement> listAttachements = configuration
 				.getListLienAttachements();
 
@@ -90,6 +94,7 @@ public class ObserverConfig {
 		}
 
 		if (!lienTransporteur.equals(null)) {
+			logger.log(Level.INFO, "Le lien attachement a été trouvé.");
 			lienTransporteur.transmetDonnee();
 		}
 	}
@@ -105,6 +110,8 @@ public class ObserverConfig {
 	public void notifierEntreeDonnee(Object port)
 			throws ExceptionDonneeIncorrecte {
 
+		logger.log(Level.INFO,
+				"Signal d'entrée de donnée reçue, traitement en cours.");
 		// Si le port est un rôle
 		// Si le port est un port_composant
 		// Si le port est un port_configuration
@@ -142,7 +149,7 @@ public class ObserverConfig {
 			noObjetArchitectural++;
 		}
 
-		// On regarde la liste des glues
+		// On regarde la liste des glues si ce n'est pas un objet architectural
 		if (null == objetArchitectural) {
 			noObjetArchitectural = 0;
 			while (!interfaceCommunicationTrouve
