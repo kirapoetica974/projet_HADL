@@ -17,14 +17,14 @@ import M2.Objet_Architectural.Interface_Communication.Role_Requis;
 
 public class ObserverConfig {
 
-	Configuration configuration;
+	static Configuration configuration;
 
 	/** L'instance statique */
 	private static ObserverConfig instance;
 
 	public static ObserverConfig getInstance() {
 		if (null == instance) { // Premier appel
-			instance = new ObserverConfig();
+			instance = new ObserverConfig(configuration);
 		}
 		return instance;
 	}
@@ -61,6 +61,8 @@ public class ObserverConfig {
 	 */
 	public void notifierSortieDonnee(Object port)
 			throws ExceptionDonneeIncorrecte {
+
+		System.out.println("Signal donnee arrivee");
 		List<Lien_Attachement> listAttachements = configuration
 				.getListLienAttachements();
 
@@ -70,7 +72,7 @@ public class ObserverConfig {
 		Boolean lienAttachementTrouve = false;
 		int noLien = 0;
 
-		while (!lienAttachementTrouve || noLien < listAttachements.size()) {
+		while (!lienAttachementTrouve && noLien < listAttachements.size()) {
 			lienAttachementTrouve = verifierLienAttachement(port,
 					listAttachements.get(noLien));
 			if (lienAttachementTrouve) {
@@ -79,7 +81,7 @@ public class ObserverConfig {
 			noLien++;
 		}
 
-		if (!listAttachements.equals(null)) {
+		if (!lienTransporteur.equals(null)) {
 			lienTransporteur.transmetDonnee();
 		}
 	}
