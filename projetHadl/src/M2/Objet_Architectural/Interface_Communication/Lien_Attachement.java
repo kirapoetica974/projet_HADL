@@ -1,5 +1,6 @@
 package M2.Objet_Architectural.Interface_Communication;
 
+import M2.ExceptionDonneeIncorrecte;
 import M2.ObserverConfig;
 
 /**
@@ -106,7 +107,7 @@ public class Lien_Attachement {
 		this.portComposantRequis = portComposantRequis;
 	}
 
-	public void transmetDonnee() {
+	public void transmetDonnee() throws ExceptionDonneeIncorrecte {
 		String donnee = null;
 		if (this.portComposantRequis != null && this.roleFourni != null) {
 			donnee = this.portComposantRequis.getElmtStocke();

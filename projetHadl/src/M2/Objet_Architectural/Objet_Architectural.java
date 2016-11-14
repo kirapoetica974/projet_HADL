@@ -58,4 +58,11 @@ public abstract class Objet_Architectural {
 		this.nom = nom;
 	}
 
+	/**
+	 * Méthode qui permet de transmettre une donnée
+	 */
+	public void transmetDonnee() {
+
+	}
+
 }

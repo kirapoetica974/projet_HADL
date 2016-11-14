@@ -6,8 +6,8 @@ import M2.Objet_Architectural.Objet_Architectural;
 import M2.Objet_Architectural.Configuration.Configuration;
 import M2.Objet_Architectural.Interface_Communication.Lien_Attachement;
 import M2.Objet_Architectural.Interface_Communication.Port;
+import M2.Objet_Architectural.Interface_Communication.Port_Composant_Fourni;
 import M2.Objet_Architectural.Interface_Communication.Port_Composant_Requis;
-import M2.Objet_Architectural.Interface_Communication.Port_Configuration_Fourni;
 import M2.Objet_Architectural.Interface_Communication.Role;
 import M2.Objet_Architectural.Interface_Communication.Role_Fourni;
 import M2.Objet_Architectural.Interface_Communication.Role_Requis;
@@ -149,7 +149,7 @@ public class ObserverConfig {
 		Boolean portCompRequis = port instanceof Port_Composant_Requis
 				&& lien_Attachement.getPortComposantRequis().equals(port);
 
-		Boolean portCompFourni = port instanceof Port_Configuration_Fourni
+		Boolean portCompFourni = port instanceof Port_Composant_Fourni
 				&& lien_Attachement.getPortComposantRequis().equals(port);
 
 		Boolean roleRequis = port instanceof Role_Requis
