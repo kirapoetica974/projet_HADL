@@ -90,8 +90,8 @@ public class ObserverConfig {
 		int noObjetArchitectural = 0;
 
 		while (!objetArchitecturalTrouve
-				|| noObjetArchitectural < listeObjetArchitectural.size()) {
-			// listeObjetArchitectural.get(noObjetArchitectural);
+				&& noObjetArchitectural < listeObjetArchitectural.size()) {
+			listeObjetArchitectural.get(noObjetArchitectural).getInterfaceCommunication()
 		}
 
 	}
