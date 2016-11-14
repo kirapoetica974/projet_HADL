@@ -30,27 +30,26 @@ public class Simple_CS extends Configuration {
 		this.client = new Client();
 		this.serveur = new Serveur();
 		this.rpc = new Rpc();
-
-		if (null != client) {
-			this.client = client;
-		}
-		if (null != serveur) {
-			this.serveur = serveur;
-		}
-		if (null != rpc) {
-			this.rpc = rpc;
-		}
-
+		this.clientLienAttachement = new Client_Lien_Attachement();
+		this.rpcLienAttachement = new Rpc_Lien_Attachement();
 		this.portSimpleCsEntree = new Simple_CS_Requis();
 		this.portSimpleCsSortie = new Simple_CS_Fourni();
 
+		/*
+		 * Ajout du client, du serveur et du RPC dans la liste des obj
+		 * architecturaux
+		 */
 		this.addObjetArchitectural(this.client);
 		this.addObjetArchitectural(this.serveur);
 		this.addObjetArchitectural(this.rpc);
+
+		// Ajout des ports dans la liste des interfaces de communication
 		this.addInterfaceCommunication(this.portSimpleCsEntree);
 		this.addInterfaceCommunication(this.portSimpleCsSortie);
 
-		this.addListLienAttachements(rpc_Lien_Attachement);
+		// Ajout des lien attachement dans la liste des liens attachements
+		this.addLienAttachement(rpcLienAttachement);
+		this.addLienAttachement(clientLienAttachement);
 	}
 
 	/**
