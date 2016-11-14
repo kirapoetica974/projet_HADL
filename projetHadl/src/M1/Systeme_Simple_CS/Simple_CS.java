@@ -17,11 +17,6 @@ public class Simple_CS extends Configuration {
 	private Rpc_Lien_Attachement rpcLienAttachement;
 	private Client_Lien_Attachement clientLienAttachement;
 
-	/*
-	 * public Simple_CS(Client client, Simple_CS_Entree scEntree,
-	 * Simple_CS_Sortie scSortie) {
-	 */
-
 	public Simple_CS() {
 		super();
 

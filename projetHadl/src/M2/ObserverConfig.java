@@ -2,6 +2,7 @@ package M2;
 
 import java.util.List;
 
+import M1.Systeme_Simple_CS.ExceptionObserverNonConfigure;
 import M2.Objet_Architectural.Objet_Architectural;
 import M2.Objet_Architectural.Configuration.Configuration;
 import M2.Objet_Architectural.Configuration.PackageConnecteur.Connecteur_Simple;
@@ -17,14 +18,21 @@ import M2.Objet_Architectural.Interface_Communication.Role_Requis;
 
 public class ObserverConfig {
 
-	static Configuration configuration;
+	private static Configuration configuration;
 
 	/** L'instance statique */
 	private static ObserverConfig instance;
 
 	public static ObserverConfig getInstance() {
-		if (null == instance) { // Premier appel
+		if (null == instance && configuration != null) { // Premier appel
 			instance = new ObserverConfig(configuration);
+		} else if (configuration != null) {
+			try {
+				throw new ExceptionObserverNonConfigure(
+						"L'observeur doit contenir une configuration");
+			} catch (ExceptionObserverNonConfigure e) {
+				e.printStackTrace();
+			}
 		}
 		return instance;
 	}
