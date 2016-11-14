@@ -10,24 +10,7 @@ public class SQL_Request extends Connecteur_Simple_Explicite {
 		super();
 
 		this.sqlRequestGlue = new SQL_Request_Glue();
-
-		if (null != sqlRequestGlue) {
-			this.sqlRequestGlue = sqlRequestGlue;
-		}
+		this.setGlue(sqlRequestGlue);
 	}
 
-	/**
-	 * @return sqlRequestGlue
-	 */
-	public SQL_Request_Glue getSqlRequestGlue() {
-		return sqlRequestGlue;
-	}
-
-	/**
-	 * @param sqlRequestGlue
-	 *            : sqlRequestGlue à modifier
-	 */
-	public void setSqlRequestGlue(SQL_Request_Glue sqlRequestGlue) {
-		this.sqlRequestGlue = sqlRequestGlue;
-	}
 }

@@ -10,24 +10,6 @@ public class Security_Query extends Connecteur_Simple_Explicite {
 		super();
 
 		this.securityQueryGlue = new Security_Query_Glue();
-
-		if (null != securityQueryGlue) {
-			this.securityQueryGlue = securityQueryGlue;
-		}
-	}
-
-	/**
-	 * @return securityQueryGlue
-	 */
-	public Security_Query_Glue getSecurityQueryGlue() {
-		return securityQueryGlue;
-	}
-
-	/**
-	 * @param securityQueryGlue
-	 *            : securityQueryGlue à modifier
-	 */
-	public void setSecurityQueryGlue(Security_Query_Glue securityQueryGlue) {
-		this.securityQueryGlue = securityQueryGlue;
+		this.setGlue(securityQueryGlue);
 	}
 }
