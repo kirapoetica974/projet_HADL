@@ -4,4 +4,9 @@ import M2.Objet_Architectural.Interface_Communication.Role_Fourni;
 
 public class Security_Query_Called extends Role_Fourni {
 
+	public Security_Query_Called() {
+		super();
+		super.setNom("Security_Query_Called");
+	}
+
 }

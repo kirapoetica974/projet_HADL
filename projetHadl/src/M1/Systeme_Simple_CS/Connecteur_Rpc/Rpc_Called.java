@@ -4,4 +4,9 @@ import M2.Objet_Architectural.Interface_Communication.Role_Fourni;
 
 public class Rpc_Called extends Role_Fourni {
 
+	public Rpc_Called() {
+		super();
+		super.setNom("Rpc_Called");
+	}
+
 }

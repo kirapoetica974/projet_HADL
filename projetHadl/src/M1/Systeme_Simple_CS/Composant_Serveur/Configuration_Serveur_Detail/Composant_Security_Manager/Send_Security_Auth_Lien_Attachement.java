@@ -6,16 +6,14 @@ import M2.Objet_Architectural.Interface_Communication.Lien_Attachement;
 
 public class Send_Security_Auth_Lien_Attachement extends Lien_Attachement {
 
-	private static Send_Security_Auth sendSecurityAuth;
-	private static Clearence_Request_Called clearenceRequestCalled;
+	private static Send_Security_Auth sendSecurityAuth = new Send_Security_Auth();
+	private static Clearence_Request_Called clearenceRequestCalled = new Clearence_Request_Called();
 
 	public Send_Security_Auth_Lien_Attachement() throws ExceptionMauvaisLien {
 		super(clearenceRequestCalled, sendSecurityAuth);
 
-		this.sendSecurityAuth = new Send_Security_Auth();
 		this.setPortComposantRequis(sendSecurityAuth);
 
-		this.clearenceRequestCalled = new Clearence_Request_Called();
 		this.setRoleFourni(clearenceRequestCalled);
 	}
 

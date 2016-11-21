@@ -4,4 +4,9 @@ import M2.Objet_Architectural.Interface_Communication.Port_Configuration_Fourni;
 
 public class Serveur_Detail_Fourni extends Port_Configuration_Fourni {
 
+	public Serveur_Detail_Fourni() {
+		super();
+		super.setNom("Serveur_Detail_Fourni");
+	}
+
 }

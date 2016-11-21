@@ -4,4 +4,9 @@ import M2.Objet_Architectural.Interface_Communication.Role_Fourni;
 
 public class Clearence_Request_Called extends Role_Fourni {
 
+	public Clearence_Request_Called() {
+		super();
+		super.setNom("Clearence_Request_Called");
+	}
+
 }

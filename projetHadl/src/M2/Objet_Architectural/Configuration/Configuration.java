@@ -86,4 +86,10 @@ public class Configuration extends Objet_Architectural {
 		this.listLienAttachements.add(lienAttachement);
 	}
 
+	@Override
+	public void transmetDonnee() {
+		// TODO Auto-generated method stub
+
+	}
+
 }

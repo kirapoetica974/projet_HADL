@@ -13,4 +13,10 @@ public class SQL_Request extends Connecteur_Explicite {
 		this.setGlue(sqlRequestGlue);
 	}
 
+	@Override
+	public void transmetDonnee() {
+		// TODO Auto-generated method stub
+
+	}
+
 }

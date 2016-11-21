@@ -1,5 +1,8 @@
 package M2.Objet_Architectural.Interface_Communication;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import M2.ExceptionDonneeIncorrecte;
 import M2.ObserverConfig;
 
@@ -9,6 +12,8 @@ import M2.ObserverConfig;
  * contrôle est effetué lors de la création du lien grâce au constructeur
  */
 public class Lien_Attachement {
+	private final static Logger logger = Logger.getLogger(Logger.class
+			.getName());
 
 	private Role_Requis roleRequis = null;
 
@@ -108,18 +113,21 @@ public class Lien_Attachement {
 	}
 
 	public void transmetDonnee() throws ExceptionDonneeIncorrecte {
+		ObserverConfig obs = ObserverConfig.getInstance();
+		logger.log(Level.INFO, "la donnée est dans le lien attachement "
+				+ this.getClass().getName());
 		String donnee = null;
 		if (this.portComposantRequis != null && this.roleFourni != null) {
 			donnee = this.portComposantRequis.getElmtStocke();
 			if (donnee != null) {
 				this.roleFourni.setElmtStocke(donnee);
-				observer.notifierEntreeDonnee(this.roleFourni);
+				obs.notifierEntreeDonnee(this.roleFourni);
 			}
 		} else if (this.portComposantFourni != null && this.roleRequis != null) {
 			donnee = this.roleRequis.getElmtStocke();
 			if (donnee != null) {
 				this.portComposantFourni.setElmtStocke(donnee);
-				observer.notifierEntreeDonnee(this.portComposantFourni);
+				obs.notifierEntreeDonnee(this.portComposantFourni);
 			}
 		}
 

@@ -26,4 +26,10 @@ public class Connection_Manager extends Composant {
 		this.addInterfaceCommunication(this.sendSecurityCheck);
 	}
 
+	@Override
+	public void transmetDonnee() {
+		// TODO Auto-generated method stub
+
+	}
+
 }

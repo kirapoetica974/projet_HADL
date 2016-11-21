@@ -5,7 +5,7 @@ import java.util.List;
 
 import M2.Objet_Architectural.Objet_Architectural;
 
-public class Composant extends Objet_Architectural {
+public abstract class Composant extends Objet_Architectural {
 
 	private List<Propriete> listePropriete = new ArrayList<Propriete>();
 

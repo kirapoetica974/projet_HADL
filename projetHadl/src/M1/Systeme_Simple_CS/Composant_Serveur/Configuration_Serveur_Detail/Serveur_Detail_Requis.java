@@ -4,4 +4,9 @@ import M2.Objet_Architectural.Interface_Communication.Port_Configuration_Requis;
 
 public class Serveur_Detail_Requis extends Port_Configuration_Requis {
 
+	public Serveur_Detail_Requis() {
+		super();
+		super.setNom("Serveur_Detail_Requis");
+	}
+
 }

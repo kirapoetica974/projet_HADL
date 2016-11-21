@@ -16,6 +16,18 @@ public class Security_Manager extends Composant {
 		this.receiveSecurityAuth = new Receive_Security_Auth();
 		this.sendCQuery = new Send_C_Query();
 		this.sendSecurityAuth = new Send_Security_Auth();
+
+		this.setNom("Security_Manager");
+		this.addInterfaceCommunication(receiveCQuery);
+		this.addInterfaceCommunication(receiveSecurityAuth);
+		this.addInterfaceCommunication(sendCQuery);
+		this.addInterfaceCommunication(sendSecurityAuth);
+	}
+
+	@Override
+	public void transmetDonnee() {
+		// TODO Auto-generated method stub
+
 	}
 
 }

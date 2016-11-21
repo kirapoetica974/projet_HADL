@@ -4,4 +4,9 @@ import M2.Objet_Architectural.Interface_Communication.Role_Requis;
 
 public class Security_Query_Caller extends Role_Requis {
 
+	public Security_Query_Caller() {
+		super();
+		super.setNom("Security_Query_Caller");
+	}
+
 }

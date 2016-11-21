@@ -4,4 +4,9 @@ import M2.Objet_Architectural.Interface_Communication.Port_Composant_Fourni;
 
 public class Receive_DB_Query extends Port_Composant_Fourni {
 
+	public Receive_DB_Query() {
+		super();
+		super.setNom("Receive_DB_Query");
+	}
+
 }

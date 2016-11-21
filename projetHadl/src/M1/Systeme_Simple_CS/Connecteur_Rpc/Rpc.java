@@ -15,4 +15,10 @@ public class Rpc extends Connecteur_Explicite {
 		this.setGlue(rpcGlue);
 	}
 
+	@Override
+	public void transmetDonnee() {
+		// TODO Auto-generated method stub
+
+	}
+
 }

@@ -4,4 +4,9 @@ import M2.Objet_Architectural.Interface_Communication.Role_Requis;
 
 public class SQL_Request_Caller extends Role_Requis {
 
+	public SQL_Request_Caller() {
+		super();
+		super.setNom("SQL_Request_Caller");
+	}
+
 }

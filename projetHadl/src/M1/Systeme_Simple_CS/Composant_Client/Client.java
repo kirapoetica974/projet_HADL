@@ -18,6 +18,7 @@ public class Client extends Composant {
 		this.sendRequest = new Send_Request();
 		this.receiveClient = new Receive_Client();
 
+		this.setNom("Client");
 		this.addInterfaceCommunication(this.sendRequest);
 		this.addInterfaceCommunication(this.receiveClient);
 
@@ -27,6 +28,12 @@ public class Client extends Composant {
 		sendRequest.setElmtStocke(s);
 		System.out.println("Client : j'envoie une donnee 'blabla' ");
 		ObserverConfig.getInstance().notifierSortieDonnee(sendRequest);
+	}
+
+	@Override
+	public void transmetDonnee() {
+		// TODO Auto-generated method stub
+
 	}
 
 }

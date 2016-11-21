@@ -61,8 +61,6 @@ public abstract class Objet_Architectural {
 	/**
 	 * Méthode qui permet de transmettre une donnée
 	 */
-	public void transmetDonnee() {
-
-	}
+	public abstract void transmetDonnee();
 
 }

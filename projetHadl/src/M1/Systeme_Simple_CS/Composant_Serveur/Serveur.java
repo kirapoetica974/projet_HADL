@@ -17,4 +17,10 @@ public class Serveur extends Composant {
 		this.addInterfaceCommunication(this.sendRequestServeur);
 	}
 
+	@Override
+	public void transmetDonnee() {
+		// TODO Auto-generated method stub
+
+	}
+
 }

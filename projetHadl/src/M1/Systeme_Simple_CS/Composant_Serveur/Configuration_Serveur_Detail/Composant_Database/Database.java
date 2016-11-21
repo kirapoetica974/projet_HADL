@@ -16,6 +16,18 @@ public class Database extends Composant {
 		this.receiveSecurityManagement = new Receive_Security_Management();
 		this.sendQueryInt = new Send_Query_Int();
 		this.sendSecurityManagement = new Send_Security_Management();
+
+		this.setNom("Database");
+		this.addInterfaceCommunication(receiveQueryInt);
+		this.addInterfaceCommunication(receiveSecurityManagement);
+		this.addInterfaceCommunication(sendQueryInt);
+		this.addInterfaceCommunication(sendSecurityManagement);
+	}
+
+	@Override
+	public void transmetDonnee() {
+		// TODO Auto-generated method stub
+
 	}
 
 }

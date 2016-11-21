@@ -12,4 +12,10 @@ public class Security_Query extends Connecteur_Explicite {
 		this.securityQueryGlue = new Security_Query_Glue();
 		this.setGlue(securityQueryGlue);
 	}
+
+	@Override
+	public void transmetDonnee() {
+		// TODO Auto-generated method stub
+
+	}
 }

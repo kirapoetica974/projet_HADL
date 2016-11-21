@@ -1,5 +1,5 @@
 package M2.Objet_Architectural.Configuration.PackageConnecteur;
 
-public class Connecteur_Enumere extends Connecteur {
+public abstract class Connecteur_Enumere extends Connecteur {
 
 }

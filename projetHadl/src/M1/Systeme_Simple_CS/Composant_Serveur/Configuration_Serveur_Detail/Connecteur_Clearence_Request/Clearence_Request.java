@@ -12,4 +12,10 @@ public class Clearence_Request extends Connecteur_Explicite {
 		this.setGlue(this.clearenceRequestGlue);
 	}
 
+	@Override
+	public void transmetDonnee() {
+		// TODO Auto-generated method stub
+
+	}
+
 }

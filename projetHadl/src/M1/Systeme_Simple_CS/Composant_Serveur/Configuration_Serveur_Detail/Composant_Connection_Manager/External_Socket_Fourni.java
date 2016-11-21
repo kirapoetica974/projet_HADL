@@ -4,4 +4,9 @@ import M2.Objet_Architectural.Interface_Communication.Port_Composant_Fourni;
 
 public class External_Socket_Fourni extends Port_Composant_Fourni {
 
+	public External_Socket_Fourni() {
+		super();
+		super.setNom("External_Socket_Fourni");
+	}
+
 }

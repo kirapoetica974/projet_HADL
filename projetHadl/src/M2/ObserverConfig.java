@@ -215,18 +215,43 @@ public class ObserverConfig {
 
 		boolean portCorrect = false;
 
-		Boolean portCompRequis = port instanceof Port_Composant_Requis
-				&& lien_Attachement.getPortComposantRequis() instanceof Port_Composant_Requis;
-
-		Boolean portCompFourni = port instanceof Port_Composant_Fourni;
-
-		Boolean roleRequis = port instanceof Role_Requis;
-
-		Boolean roleFourni = port instanceof Role_Fourni
-				&& port.equals(lien_Attachement.getRoleFourni());
-
-		if (portCompRequis || portCompFourni || roleFourni || roleRequis) {
-			portCorrect = true;
+		// C'est un port composant requis
+		if (port instanceof Port_Composant_Requis) {
+			Port_Composant_Requis p = (Port_Composant_Requis) port;
+			if (p.getNom().equals(
+					lien_Attachement.getPortComposantRequis().getNom())) {
+				portCorrect = true;
+				lien_Attachement.getPortComposantRequis().setElmtStocke(
+						p.getElmtStocke());
+			}
+		}
+		// C'est un port Composant fourni
+		else if (port instanceof Port_Composant_Fourni) {
+			Port_Composant_Fourni p = (Port_Composant_Fourni) port;
+			if (p.getNom().equals(
+					lien_Attachement.getPortComposantFourni().getNom())) {
+				portCorrect = true;
+				lien_Attachement.getPortComposantFourni().setElmtStocke(
+						p.getElmtStocke());
+			}
+		}
+		// C'est un role requis
+		else if (port instanceof Role_Requis) {
+			Role_Requis p = (Role_Requis) port;
+			if (p.getNom().equals(lien_Attachement.getRoleRequis().getNom())) {
+				portCorrect = true;
+				lien_Attachement.getRoleRequis().setElmtStocke(
+						p.getElmtStocke());
+			}
+		}
+		// C'est un role fourni
+		else if (port instanceof Role_Fourni) {
+			Role_Fourni p = (Role_Fourni) port;
+			if (p.getNom().equals(lien_Attachement.getRoleFourni().getNom())) {
+				portCorrect = true;
+				lien_Attachement.getRoleFourni().setElmtStocke(
+						p.getElmtStocke());
+			}
 		}
 
 		return portCorrect;

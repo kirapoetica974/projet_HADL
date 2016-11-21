@@ -6,16 +6,14 @@ import M2.Objet_Architectural.Interface_Communication.Lien_Attachement;
 
 public class Send_Query_Int_Lien_Attachement extends Lien_Attachement {
 
-	private static Send_Query_Int sendQueryInt;
-	private static SQL_Request_Called sqlRequestCalled;
+	private static Send_Query_Int sendQueryInt = new Send_Query_Int();
+	private static SQL_Request_Called sqlRequestCalled = new SQL_Request_Called();
 
 	public Send_Query_Int_Lien_Attachement() throws ExceptionMauvaisLien {
 		super(sqlRequestCalled, sendQueryInt);
 
-		this.sendQueryInt = new Send_Query_Int();
 		this.setPortComposantRequis(sendQueryInt);
 
-		this.sqlRequestCalled = new SQL_Request_Called();
 		this.setRoleFourni(sqlRequestCalled);
 	}
 }

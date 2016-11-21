@@ -4,4 +4,9 @@ import M2.Objet_Architectural.Interface_Communication.Port_Composant_Requis;
 
 public class External_Socket_Requis extends Port_Composant_Requis {
 
+	public External_Socket_Requis() {
+		super();
+		super.setNom("External_Socket_Requis");
+	}
+
 }

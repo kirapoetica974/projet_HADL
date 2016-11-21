@@ -4,4 +4,9 @@ import M2.Objet_Architectural.Interface_Communication.Port_Composant_Fourni;
 
 public class Receive_Security_Check extends Port_Composant_Fourni {
 
+	public Receive_Security_Check() {
+		super();
+		super.setNom("Receive_Security_Check");
+	}
+
 }
