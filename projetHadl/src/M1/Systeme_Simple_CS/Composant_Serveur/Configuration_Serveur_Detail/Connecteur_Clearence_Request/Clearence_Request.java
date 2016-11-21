@@ -1,8 +1,8 @@
 package M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Connecteur_Clearence_Request;
 
-import M2.Objet_Architectural.Configuration.PackageConnecteur.Connecteur_Simple_Explicite;
+import M2.Objet_Architectural.Configuration.PackageConnecteur.Connecteur_Explicite;
 
-public class Clearence_Request extends Connecteur_Simple_Explicite {
+public class Clearence_Request extends Connecteur_Explicite {
 
 	private Clearence_Request_Glue clearenceRequestGlue;
 

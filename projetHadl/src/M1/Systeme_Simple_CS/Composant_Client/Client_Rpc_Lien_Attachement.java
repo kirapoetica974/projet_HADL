@@ -6,17 +6,14 @@ import M2.Objet_Architectural.Interface_Communication.Lien_Attachement;
 
 public class Client_Rpc_Lien_Attachement extends Lien_Attachement {
 
-	private static Send_Request sendRequest;
-	private static Rpc_Called rpcCalled;
+	private static Send_Request sendRequest = new Send_Request();
+	private static Rpc_Called rpcCalled = new Rpc_Called();
 
 	public Client_Rpc_Lien_Attachement() throws ExceptionMauvaisLien {
 
 		super(rpcCalled, sendRequest);
 
-		this.sendRequest = new Send_Request();
 		this.setPortComposantRequis(sendRequest);
-
-		this.rpcCalled = new Rpc_Called();
 		this.setRoleFourni(rpcCalled);
 
 	}

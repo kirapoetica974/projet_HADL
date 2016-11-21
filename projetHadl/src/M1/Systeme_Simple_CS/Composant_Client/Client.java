@@ -2,9 +2,9 @@ package M1.Systeme_Simple_CS.Composant_Client;
 
 import M2.ExceptionDonneeIncorrecte;
 import M2.ObserverConfig;
-import M2.Objet_Architectural.Configuration.PackageComposant.Composant_Simple;
+import M2.Objet_Architectural.Configuration.PackageComposant.Composant;
 
-public class Client extends Composant_Simple {
+public class Client extends Composant {
 
 	private Send_Request sendRequest;
 	private Receive_Client receiveClient;

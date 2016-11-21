@@ -4,4 +4,9 @@ import M2.Objet_Architectural.Interface_Communication.Port_Composant_Fourni;
 
 public class Receive_Client extends Port_Composant_Fourni {
 
+	public Receive_Client() {
+		super();
+		super.setNom("Receive_Client");
+	}
+
 }

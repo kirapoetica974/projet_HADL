@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 import M1.Systeme_Simple_CS.ExceptionObserverNonConfigure;
 import M2.Objet_Architectural.Objet_Architectural;
 import M2.Objet_Architectural.Configuration.Configuration;
-import M2.Objet_Architectural.Configuration.PackageConnecteur.Connecteur_Simple;
+import M2.Objet_Architectural.Configuration.PackageConnecteur.Connecteur;
 import M2.Objet_Architectural.Configuration.PackageConnecteur.Glue;
 import M2.Objet_Architectural.Interface_Communication.Interface;
 import M2.Objet_Architectural.Interface_Communication.Lien_Attachement;
@@ -159,8 +159,8 @@ public class ObserverConfig {
 						.get(noObjetArchitectural);
 
 			// Est ce que le port correspond au role de cette glue ?
-			if (objetArchitectural instanceof Connecteur_Simple) {
-				Glue glue = ((Connecteur_Simple) objetArchitectural).getGlue();
+			if (objetArchitectural instanceof Connecteur) {
+				Glue glue = ((Connecteur) objetArchitectural).getGlue();
 				List<Role_Fourni> listeRoleFourni = glue.getListeRoleFourni();
 
 				for (Role_Fourni roleFourni : listeRoleFourni) {
@@ -216,16 +216,14 @@ public class ObserverConfig {
 		boolean portCorrect = false;
 
 		Boolean portCompRequis = port instanceof Port_Composant_Requis
-				&& lien_Attachement.getPortComposantRequis().equals(port);
+				&& lien_Attachement.getPortComposantRequis() instanceof Port_Composant_Requis;
 
-		Boolean portCompFourni = port instanceof Port_Composant_Fourni
-				&& lien_Attachement.getPortComposantRequis().equals(port);
+		Boolean portCompFourni = port instanceof Port_Composant_Fourni;
 
-		Boolean roleRequis = port instanceof Role_Requis
-				&& lien_Attachement.getRoleRequis().equals(port);
+		Boolean roleRequis = port instanceof Role_Requis;
 
 		Boolean roleFourni = port instanceof Role_Fourni
-				&& lien_Attachement.getRoleFourni().equals(port);
+				&& port.equals(lien_Attachement.getRoleFourni());
 
 		if (portCompRequis || portCompFourni || roleFourni || roleRequis) {
 			portCorrect = true;

@@ -4,4 +4,8 @@ import M2.Objet_Architectural.Interface_Communication.Port_Composant_Requis;
 
 public class Serveur_Requis extends Port_Composant_Requis {
 
+	public Serveur_Requis() {
+		super();
+		super.setNom("Serveur_Requis");
+	}
 }
