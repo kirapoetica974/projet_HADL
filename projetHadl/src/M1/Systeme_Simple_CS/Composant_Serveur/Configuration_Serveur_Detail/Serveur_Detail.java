@@ -22,8 +22,8 @@ public class Serveur_Detail extends Configuration {
 		super();
 
 		this.sqlRequest = new SQL_Request(null);
-		this.clearenceRequest = new Clearence_Request(null);
-		this.securityQuery = new Security_Query(null);
+		this.clearenceRequest = new Clearence_Request();
+		this.securityQuery = new Security_Query();
 
 		this.connectionManager = new Connection_Manager();
 		this.database = new Database();

@@ -1,8 +1,8 @@
 package M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Security_Manager;
 
-import M2.Objet_Architectural.Configuration.PackageComposant.Composant_Simple;
+import M2.Objet_Architectural.Configuration.PackageComposant.Composant;
 
-public class Security_Manager extends Composant_Simple {
+public class Security_Manager extends Composant {
 
 	private Receive_C_Query receiveCQuery;
 	private Receive_Security_Auth receiveSecurityAuth;

@@ -1,8 +1,8 @@
 package M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Database;
 
-import M2.Objet_Architectural.Configuration.PackageComposant.Composant_Simple;
+import M2.Objet_Architectural.Configuration.PackageComposant.Composant;
 
-public class Database extends Composant_Simple {
+public class Database extends Composant {
 
 	private Receive_Query_Int receiveQueryInt;
 	private Receive_Security_Management receiveSecurityManagement;

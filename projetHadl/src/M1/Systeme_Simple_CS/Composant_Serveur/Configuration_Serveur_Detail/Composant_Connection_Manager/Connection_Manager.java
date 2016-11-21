@@ -1,8 +1,8 @@
 package M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Connection_Manager;
 
-import M2.Objet_Architectural.Configuration.PackageComposant.Composant_Simple;
+import M2.Objet_Architectural.Configuration.PackageComposant.Composant;
 
-public class Connection_Manager extends Composant_Simple {
+public class Connection_Manager extends Composant {
 
 	private External_Socket_Fourni externalSocket;
 	private Receive_DB_Query receiveDBQuery;

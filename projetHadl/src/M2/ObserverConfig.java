@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 import M1.Systeme_Simple_CS.ExceptionObserverNonConfigure;
 import M2.Objet_Architectural.Objet_Architectural;
 import M2.Objet_Architectural.Configuration.Configuration;
-import M2.Objet_Architectural.Configuration.PackageConnecteur.Connecteur_Simple;
+import M2.Objet_Architectural.Configuration.PackageConnecteur.Connecteur;
 import M2.Objet_Architectural.Configuration.PackageConnecteur.Glue;
 import M2.Objet_Architectural.Interface_Communication.Interface;
 import M2.Objet_Architectural.Interface_Communication.Lien_Attachement;
@@ -159,8 +159,8 @@ public class ObserverConfig {
 						.get(noObjetArchitectural);
 
 			// Est ce que le port correspond au role de cette glue ?
-			if (objetArchitectural instanceof Connecteur_Simple) {
-				Glue glue = ((Connecteur_Simple) objetArchitectural).getGlue();
+			if (objetArchitectural instanceof Connecteur) {
+				Glue glue = ((Connecteur) objetArchitectural).getGlue();
 				List<Role_Fourni> listeRoleFourni = glue.getListeRoleFourni();
 
 				for (Role_Fourni roleFourni : listeRoleFourni) {

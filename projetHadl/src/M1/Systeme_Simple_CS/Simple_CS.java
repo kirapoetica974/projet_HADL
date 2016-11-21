@@ -1,11 +1,12 @@
 package M1.Systeme_Simple_CS;
 
 import M1.Systeme_Simple_CS.Composant_Client.Client;
-import M1.Systeme_Simple_CS.Composant_Client.Client_Lien_Attachement;
+import M1.Systeme_Simple_CS.Composant_Client.Client_Rpc_Lien_Attachement;
 import M1.Systeme_Simple_CS.Composant_Serveur.Serveur;
 import M1.Systeme_Simple_CS.Connecteur_Rpc.Rpc;
-import M1.Systeme_Simple_CS.Connecteur_Rpc.Rpc_Lien_Attachement;
+import M1.Systeme_Simple_CS.Connecteur_Rpc.Rpc_Serveur_Lien_Attachement;
 import M2.Objet_Architectural.Configuration.Configuration;
+import M2.Objet_Architectural.Interface_Communication.ExceptionMauvaisLien;
 
 public class Simple_CS extends Configuration {
 
@@ -14,10 +15,10 @@ public class Simple_CS extends Configuration {
 	private Simple_CS_Requis portSimpleCsEntree;
 	private Simple_CS_Fourni portSimpleCsSortie;
 	private Rpc rpc;
-	private Rpc_Lien_Attachement rpcLienAttachement;
-	private Client_Lien_Attachement clientLienAttachement;
+	private Client_Rpc_Lien_Attachement clientRpcLienAttachement;
+	private Rpc_Serveur_Lien_Attachement rpcServeurLienAttachement;
 
-	public Simple_CS() {
+	public Simple_CS() throws ExceptionMauvaisLien {
 		super();
 
 		this.setNom("Simple CS");
@@ -25,8 +26,8 @@ public class Simple_CS extends Configuration {
 		this.client = new Client();
 		this.serveur = new Serveur();
 		this.rpc = new Rpc();
-		this.clientLienAttachement = new Client_Lien_Attachement();
-		this.rpcLienAttachement = new Rpc_Lien_Attachement();
+		this.clientRpcLienAttachement = new Client_Rpc_Lien_Attachement();
+		this.rpcServeurLienAttachement = new Rpc_Serveur_Lien_Attachement();
 		this.portSimpleCsEntree = new Simple_CS_Requis();
 		this.portSimpleCsSortie = new Simple_CS_Fourni();
 
@@ -43,8 +44,8 @@ public class Simple_CS extends Configuration {
 		this.addInterfaceCommunication(this.portSimpleCsSortie);
 
 		// Ajout des lien attachement dans la liste des liens attachements
-		this.addLienAttachement(rpcLienAttachement);
-		this.addLienAttachement(clientLienAttachement);
+		this.addLienAttachement(clientRpcLienAttachement);
+		this.addLienAttachement(rpcServeurLienAttachement);
 	}
 
 	/**
