@@ -6,16 +6,14 @@ import M2.Objet_Architectural.Interface_Communication.Lien_Binding;
 
 public class Simple_CS_Requis_Client_Lien_Binding extends Lien_Binding {
 
-	private static Client_Requis clientRequis;
-	private static Simple_CS_Requis simpleCSRequis;
+	private static Client_Requis clientRequis = new Client_Requis();
+	private static Simple_CS_Requis simpleCSRequis = new Simple_CS_Requis();
 
 	public Simple_CS_Requis_Client_Lien_Binding() throws ExceptionMauvaisLien {
 		super(clientRequis, simpleCSRequis);
 
-		this.clientRequis = new Client_Requis();
 		this.setPortComposantRequis(clientRequis);
 
-		this.simpleCSRequis = new Simple_CS_Requis();
 		this.setPortConfigurationRequis(simpleCSRequis);
 	}
 }

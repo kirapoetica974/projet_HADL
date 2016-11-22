@@ -6,7 +6,7 @@ public class Receive_Security_Auth extends Port_Composant_Fourni {
 
 	public Receive_Security_Auth() {
 		super();
-		super.setNom("Receive_Security_Auth");
+		this.setNom("Receive_Security_Auth");
 	}
 
 }

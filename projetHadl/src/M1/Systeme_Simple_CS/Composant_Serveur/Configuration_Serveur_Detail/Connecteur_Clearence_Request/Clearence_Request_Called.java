@@ -6,7 +6,7 @@ public class Clearence_Request_Called extends Role_Fourni {
 
 	public Clearence_Request_Called() {
 		super();
-		super.setNom("Clearence_Request_Called");
+		this.setNom("Clearence_Request_Called");
 	}
 
 }

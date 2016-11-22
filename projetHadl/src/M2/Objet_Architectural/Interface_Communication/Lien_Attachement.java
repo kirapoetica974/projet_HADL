@@ -23,8 +23,6 @@ public class Lien_Attachement {
 
 	private Port_Composant_Requis portComposantRequis = null;
 
-	private ObserverConfig observer = ObserverConfig.getInstance();
-
 	/**
 	 * Contructeur du lien attachement
 	 * 
@@ -121,12 +119,14 @@ public class Lien_Attachement {
 			donnee = this.portComposantRequis.getElmtStocke();
 			if (donnee != null) {
 				this.roleFourni.setElmtStocke(donnee);
+				this.portComposantRequis.setElmtStocke(null);
 				obs.notifierEntreeDonnee(this.roleFourni);
 			}
 		} else if (this.portComposantFourni != null && this.roleRequis != null) {
 			donnee = this.roleRequis.getElmtStocke();
 			if (donnee != null) {
 				this.portComposantFourni.setElmtStocke(donnee);
+				this.roleRequis.setElmtStocke(null);
 				obs.notifierEntreeDonnee(this.portComposantFourni);
 			}
 		}

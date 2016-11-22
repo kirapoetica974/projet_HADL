@@ -6,7 +6,7 @@ public class External_Socket_Fourni extends Port_Composant_Fourni {
 
 	public External_Socket_Fourni() {
 		super();
-		super.setNom("External_Socket_Fourni");
+		this.setNom("External_Socket_Fourni");
 	}
 
 }

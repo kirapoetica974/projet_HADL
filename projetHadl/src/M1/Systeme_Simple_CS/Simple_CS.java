@@ -21,7 +21,7 @@ public class Simple_CS extends Configuration {
 	public Simple_CS() throws ExceptionMauvaisLien {
 		super();
 
-		this.setNom("Simple CS");
+		this.setNom("Simple_CS");
 
 		this.client = new Client();
 		this.serveur = new Serveur();

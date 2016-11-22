@@ -6,7 +6,7 @@ public class Receive_Security_Management extends Port_Composant_Fourni {
 
 	public Receive_Security_Management() {
 		super();
-		super.setNom("Receive_Security_Management");
+		this.setNom("Receive_Security_Management");
 	}
 
 }

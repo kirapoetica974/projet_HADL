@@ -30,7 +30,7 @@ public class ObserverConfig {
 	public static ObserverConfig getInstance() {
 		if (null == instance && configuration != null) { // Premier appel
 			instance = new ObserverConfig(configuration);
-		} else if (configuration != null) {
+		} else if (configuration == null) {
 			try {
 				throw new ExceptionObserverNonConfigure(
 						"L'observeur doit contenir une configuration");
@@ -45,7 +45,7 @@ public class ObserverConfig {
 	}
 
 	public ObserverConfig(Configuration config) {
-		this.configuration = config;
+		ObserverConfig.configuration = config;
 	}
 
 	/**
@@ -60,12 +60,12 @@ public class ObserverConfig {
 	 *            la configuration à modifier
 	 */
 	public void setConfiguration(Configuration configuration) {
-		this.configuration = configuration;
+		ObserverConfig.configuration = configuration;
 	}
 
 	/**
-	 * Méthode qui permet d'informer au lien attachement qu'il doit transmettre
-	 * la donnée
+	 * Méthode qui permet d'informer au lien attachement ou au lien binding
+	 * qu'il doit transmettre la donnée
 	 * 
 	 * @param port
 	 *            le port qui a recu l'information
@@ -78,12 +78,11 @@ public class ObserverConfig {
 		List<Lien_Attachement> listAttachements = configuration
 				.getListLienAttachements();
 
-		String donneeATransmettre = recupDonneePort(port);
-
 		Lien_Attachement lienTransporteur = null;
 		Boolean lienAttachementTrouve = false;
 		int noLien = 0;
 
+		// On vérifie si on doit envoyer la donnée sur un lien attachement
 		while (!lienAttachementTrouve && noLien < listAttachements.size()) {
 			lienAttachementTrouve = verifierLienAttachement(port,
 					listAttachements.get(noLien));
@@ -93,10 +92,12 @@ public class ObserverConfig {
 			noLien++;
 		}
 
-		if (!lienTransporteur.equals(null)) {
+		if (null != lienTransporteur) {
 			logger.log(Level.INFO, "Le lien attachement a été trouvé.");
 			lienTransporteur.transmetDonnee();
 		}
+
+		// On vérifie si on doit envoyer la donnée sur un lien binding
 	}
 
 	/**
@@ -122,6 +123,7 @@ public class ObserverConfig {
 		Boolean interfaceCommunicationTrouve = false;
 		int noObjetArchitectural = 0;
 		int noInterfaceCommunication = 0;
+		Interface p = (Interface) port;
 
 		while (!interfaceCommunicationTrouve
 				&& noObjetArchitectural < listeObjetArchitectural.size()) {
@@ -138,14 +140,17 @@ public class ObserverConfig {
 				Interface interfaceCommunication = listeInterfaceCommunication
 						.get(noInterfaceCommunication);
 
-				if (interfaceCommunication.equals(port)) {
+				if (p.getNom().equals(interfaceCommunication.getNom())) {
 					interfaceCommunicationTrouve = true;
 					objetArchitectural = listeObjetArchitectural
 							.get(noObjetArchitectural);
+					interfaceCommunication.setElmtStocke(p.getElmtStocke());
+					objetArchitectural.transmetDonnee();
 				}
 				noInterfaceCommunication++;
 			}
 
+			noInterfaceCommunication = 0;
 			noObjetArchitectural++;
 		}
 
@@ -153,27 +158,29 @@ public class ObserverConfig {
 		if (null == objetArchitectural) {
 			noObjetArchitectural = 0;
 			while (!interfaceCommunicationTrouve
-					&& noObjetArchitectural < listeObjetArchitectural.size())
+					&& noObjetArchitectural < listeObjetArchitectural.size()) {
 
 				objetArchitectural = listeObjetArchitectural
 						.get(noObjetArchitectural);
 
-			// Est ce que le port correspond au role de cette glue ?
-			if (objetArchitectural instanceof Connecteur) {
-				Glue glue = ((Connecteur) objetArchitectural).getGlue();
-				List<Role_Fourni> listeRoleFourni = glue.getListeRoleFourni();
+				// Est ce que le port correspond au role de cette glue ?
+				if (objetArchitectural instanceof Connecteur) {
+					Glue glue = ((Connecteur) objetArchitectural).getGlue();
+					List<Role_Fourni> listeRoleFourni = glue
+							.getListeRoleFourni();
 
-				for (Role_Fourni roleFourni : listeRoleFourni) {
-					if (roleFourni.equals(port)) {
-						glue.transmetDonnee((Port) port);
+					for (Role_Fourni roleFourni : listeRoleFourni) {
+						if (p.getNom().equals(roleFourni.getNom())) {
+							roleFourni.setElmtStocke(p.getElmtStocke());
+							;
+							glue.transmetDonnee(p);
+							interfaceCommunicationTrouve = true;
+							break;
+						}
 					}
 				}
+				noObjetArchitectural++;
 			}
-		}
-
-		// Objet trouve
-		else {
-			objetArchitectural.transmetDonnee();
 		}
 
 	}
@@ -218,8 +225,9 @@ public class ObserverConfig {
 		// C'est un port composant requis
 		if (port instanceof Port_Composant_Requis) {
 			Port_Composant_Requis p = (Port_Composant_Requis) port;
-			if (p.getNom().equals(
-					lien_Attachement.getPortComposantRequis().getNom())) {
+			if (lien_Attachement.getPortComposantRequis() != null
+					&& p.getNom().equals(
+							lien_Attachement.getPortComposantRequis().getNom())) {
 				portCorrect = true;
 				lien_Attachement.getPortComposantRequis().setElmtStocke(
 						p.getElmtStocke());
@@ -228,8 +236,9 @@ public class ObserverConfig {
 		// C'est un port Composant fourni
 		else if (port instanceof Port_Composant_Fourni) {
 			Port_Composant_Fourni p = (Port_Composant_Fourni) port;
-			if (p.getNom().equals(
-					lien_Attachement.getPortComposantFourni().getNom())) {
+			if (lien_Attachement.getPortComposantFourni() != null
+					&& p.getNom().equals(
+							lien_Attachement.getPortComposantFourni().getNom())) {
 				portCorrect = true;
 				lien_Attachement.getPortComposantFourni().setElmtStocke(
 						p.getElmtStocke());
@@ -238,7 +247,9 @@ public class ObserverConfig {
 		// C'est un role requis
 		else if (port instanceof Role_Requis) {
 			Role_Requis p = (Role_Requis) port;
-			if (p.getNom().equals(lien_Attachement.getRoleRequis().getNom())) {
+			if (lien_Attachement.getRoleRequis() != null
+					&& p.getNom().equals(
+							lien_Attachement.getRoleRequis().getNom())) {
 				portCorrect = true;
 				lien_Attachement.getRoleRequis().setElmtStocke(
 						p.getElmtStocke());
@@ -247,7 +258,9 @@ public class ObserverConfig {
 		// C'est un role fourni
 		else if (port instanceof Role_Fourni) {
 			Role_Fourni p = (Role_Fourni) port;
-			if (p.getNom().equals(lien_Attachement.getRoleFourni().getNom())) {
+			if (lien_Attachement.getRoleFourni() != null
+					&& p.getNom().equals(
+							lien_Attachement.getRoleFourni().getNom())) {
 				portCorrect = true;
 				lien_Attachement.getRoleFourni().setElmtStocke(
 						p.getElmtStocke());

@@ -6,7 +6,7 @@ public class SQL_Request_Caller extends Role_Requis {
 
 	public SQL_Request_Caller() {
 		super();
-		super.setNom("SQL_Request_Caller");
+		this.setNom("SQL_Request_Caller");
 	}
 
 }

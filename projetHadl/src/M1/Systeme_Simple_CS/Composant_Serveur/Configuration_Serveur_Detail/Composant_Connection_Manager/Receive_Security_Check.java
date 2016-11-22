@@ -6,7 +6,7 @@ public class Receive_Security_Check extends Port_Composant_Fourni {
 
 	public Receive_Security_Check() {
 		super();
-		super.setNom("Receive_Security_Check");
+		this.setNom("Receive_Security_Check");
 	}
 
 }

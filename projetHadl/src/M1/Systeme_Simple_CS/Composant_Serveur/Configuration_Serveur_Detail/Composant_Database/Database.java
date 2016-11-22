@@ -1,5 +1,7 @@
 package M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Database;
 
+import M2.ExceptionDonneeIncorrecte;
+import M2.ObserverConfig;
 import M2.Objet_Architectural.Configuration.PackageComposant.Composant;
 
 public class Database extends Composant {
@@ -25,8 +27,16 @@ public class Database extends Composant {
 	}
 
 	@Override
-	public void transmetDonnee() {
-		// TODO Auto-generated method stub
+	public void transmetDonnee() throws ExceptionDonneeIncorrecte {
+		if (null != receiveSecurityManagement.getElmtStocke()) {
+			ObserverConfig obs = ObserverConfig.getInstance();
+			System.out.println("je passe par Database.");
+			sendSecurityManagement.setElmtStocke(receiveSecurityManagement
+					.getElmtStocke());
+			receiveSecurityManagement.setElmtStocke(null);
+			obs.notifierSortieDonnee(sendSecurityManagement);
+
+		}
 
 	}
 

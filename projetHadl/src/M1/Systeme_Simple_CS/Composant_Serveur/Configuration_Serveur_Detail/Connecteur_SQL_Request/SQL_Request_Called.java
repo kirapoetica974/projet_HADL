@@ -6,7 +6,7 @@ public class SQL_Request_Called extends Role_Fourni {
 
 	public SQL_Request_Called() {
 		super();
-		super.setNom("SQL_Request_Called");
+		this.setNom("SQL_Request_Called");
 	}
 
 }

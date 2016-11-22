@@ -9,6 +9,7 @@ package M2.Objet_Architectural.Interface_Communication;
 public abstract class Interface {
 
 	private String nom;
+	private String elmtStocke;
 
 	/**
 	 * @return le nom
@@ -23,6 +24,21 @@ public abstract class Interface {
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	/**
+	 * @return l'elmt stocké
+	 */
+	public String getElmtStocke() {
+		return elmtStocke;
+	}
+
+	/**
+	 * @param elmtStocke
+	 *            l'elmtStocke à modifier
+	 */
+	public void setElmtStocke(String elmtStocke) {
+		this.elmtStocke = elmtStocke;
 	}
 
 }

@@ -6,7 +6,7 @@ public class Receive_C_Query extends Port_Composant_Fourni {
 
 	public Receive_C_Query() {
 		super();
-		super.setNom("Receive_C_Query");
+		this.setNom("Receive_C_Query");
 	}
 
 }

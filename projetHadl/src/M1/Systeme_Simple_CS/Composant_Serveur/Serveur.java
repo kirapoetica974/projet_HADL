@@ -10,6 +10,7 @@ public class Serveur extends Composant {
 	public Serveur() {
 		super();
 
+		this.setNom("Serveur");
 		this.receiveRequest = new Receive_Request();
 		this.sendRequestServeur = new Send_Serveur();
 

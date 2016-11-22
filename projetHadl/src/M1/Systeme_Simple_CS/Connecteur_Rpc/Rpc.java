@@ -11,6 +11,7 @@ public class Rpc extends Connecteur_Explicite {
 	 */
 	public Rpc() {
 		super();
+		this.setNom("Rpc");
 		this.rpcGlue = new Rpc_Glue();
 		this.setGlue(rpcGlue);
 	}

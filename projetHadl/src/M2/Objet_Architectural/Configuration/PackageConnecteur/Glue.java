@@ -3,12 +3,18 @@ package M2.Objet_Architectural.Configuration.PackageConnecteur;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import M2.Objet_Architectural.Interface_Communication.Port;
+import M2.ExceptionDonneeIncorrecte;
+import M2.ObserverConfig;
+import M2.Objet_Architectural.Interface_Communication.Interface;
 import M2.Objet_Architectural.Interface_Communication.Role_Fourni;
 import M2.Objet_Architectural.Interface_Communication.Role_Requis;
 
 public class Glue {
+	private final static Logger logger = Logger.getLogger(Logger.class
+			.getName());
 
 	private List<Role_Requis> listeRoleRequis = new ArrayList<Role_Requis>();
 
@@ -90,8 +96,21 @@ public class Glue {
 		this.liensFourniRequis.put(roleFourni, roleRequis);
 	}
 
-	public void transmetDonnee(Port portEntree) {
+	public void transmetDonnee(Interface p) throws ExceptionDonneeIncorrecte {
+		logger.log(Level.INFO, "La donnée arrive dans la glue "
+				+ this.getClass().getName());
+		ObserverConfig obs = ObserverConfig.getInstance();
 
+		// La glue ne fait rien que transmettre la donnée
+		for (Role_Fourni mapKey : liensFourniRequis.keySet()) {
+			// hashMap.get(mapKey) pour accéder aux valeurs
+			if (p.getNom().equals(mapKey.getNom())) {
+				liensFourniRequis.get(mapKey).setElmtStocke(p.getElmtStocke());
+				mapKey.setElmtStocke(null);
+				obs.notifierSortieDonnee(liensFourniRequis.get(mapKey));
+				break;
+			}
+		}
 	}
 
 }

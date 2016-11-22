@@ -6,7 +6,7 @@ public class Send_C_Query extends Port_Composant_Requis {
 
 	public Send_C_Query() {
 		super();
-		super.setNom("Send_C_Query");
+		this.setNom("Send_C_Query");
 	}
 
 }

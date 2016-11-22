@@ -6,6 +6,6 @@ public class Client_Fourni extends Port_Composant_Fourni {
 
 	public Client_Fourni() {
 		super();
-		super.setNom("Client_Fourni");
+		this.setNom("Client_Fourni");
 	}
 }

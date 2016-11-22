@@ -6,7 +6,7 @@ public class Serveur_Detail_Requis extends Port_Configuration_Requis {
 
 	public Serveur_Detail_Requis() {
 		super();
-		super.setNom("Serveur_Detail_Requis");
+		this.setNom("Serveur_Detail_Requis");
 	}
 
 }

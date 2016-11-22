@@ -6,6 +6,6 @@ public class Client_Requis extends Port_Composant_Requis {
 
 	public Client_Requis() {
 		super();
-		super.setNom("Client_Requis");
+		this.setNom("Client_Requis");
 	}
 }

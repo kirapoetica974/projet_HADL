@@ -6,7 +6,7 @@ public class Security_Query_Caller extends Role_Requis {
 
 	public Security_Query_Caller() {
 		super();
-		super.setNom("Security_Query_Caller");
+		this.setNom("Security_Query_Caller");
 	}
 
 }

@@ -6,6 +6,6 @@ public class Receive_Request extends Port_Composant_Fourni {
 
 	public Receive_Request() {
 		super();
-		super.setNom("Receive_Request");
+		this.setNom("Receive_Request");
 	}
 }

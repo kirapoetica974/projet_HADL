@@ -6,7 +6,7 @@ public class Send_Security_Auth extends Port_Composant_Requis {
 
 	public Send_Security_Auth() {
 		super();
-		super.setNom("Send_Security_Auth");
+		this.setNom("Send_Security_Auth");
 	}
 
 }

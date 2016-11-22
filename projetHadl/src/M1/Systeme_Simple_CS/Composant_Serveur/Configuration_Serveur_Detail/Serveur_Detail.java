@@ -1,12 +1,25 @@
 package M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail;
 
 import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Connection_Manager.Connection_Manager;
+import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Connection_Manager.Send_DB_Query_Lien_Attachement;
+import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Connection_Manager.Send_Security_Check_Lien_Attachement;
 import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Database.Database;
+import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Database.Send_Query_Int_Lien_Attachement;
+import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Database.Send_Security_Management_Lien_Attachement;
 import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Security_Manager.Security_Manager;
+import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Security_Manager.Send_C_Query_Lien_Attachement;
+import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Security_Manager.Send_Security_Auth_Lien_Attachement;
 import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Connecteur_Clearence_Request.Clearence_Request;
+import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Connecteur_Clearence_Request.Clearence_Request_Caller_Receive_Security_Auth_Lien_Attachement;
+import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Connecteur_Clearence_Request.Clearence_Request_Caller_Receive_Security_Check_Lien_Attachement;
 import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Connecteur_SQL_Request.SQL_Request;
+import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Connecteur_SQL_Request.SQL_Request_Caller_Receive_DB_Query_Lien_Attachement;
+import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Connecteur_SQL_Request.SQL_Request_Caller_Receive_Query_Int_Lien_Attachement;
 import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Connecteur_Security_Query.Security_Query;
+import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Connecteur_Security_Query.Security_Query_Receive_C_Query_Lien_Attachement;
+import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Connecteur_Security_Query.Security_Query_Receive_Security_Management_Lien_Attachement;
 import M2.Objet_Architectural.Configuration.Configuration;
+import M2.Objet_Architectural.Interface_Communication.ExceptionMauvaisLien;
 
 public class Serveur_Detail extends Configuration {
 
@@ -17,11 +30,24 @@ public class Serveur_Detail extends Configuration {
 	private Clearence_Request clearenceRequest;
 	private Security_Query securityQuery;
 
-	public Serveur_Detail(Connection_Manager connectionManager,
-			Database database, Security_Manager securityManager) {
+	private Send_DB_Query_Lien_Attachement sendDBQueryLienAttachement;
+	private Send_Security_Check_Lien_Attachement sendSecurityCheckLienAttachement;
+	private Send_Query_Int_Lien_Attachement sendQueryIntLienAttachement;
+	private Send_Security_Management_Lien_Attachement sendSecurityManagementLienAttachement;
+	private Send_C_Query_Lien_Attachement sendCQueryLienAttachement;
+	private Send_Security_Auth_Lien_Attachement sendSecurityAuthLienAttachement;
+	private Clearence_Request_Caller_Receive_Security_Auth_Lien_Attachement clearenceRequestCallerReceiveSecurityAuthLienAttachement;
+	private Clearence_Request_Caller_Receive_Security_Check_Lien_Attachement clearenceRequestCallerReceiveSecurityCheckLienAttachement;
+	private Security_Query_Receive_C_Query_Lien_Attachement securityQueryReceiveCQueryLienAttachement;
+	private Security_Query_Receive_Security_Management_Lien_Attachement securityManagementLienAttachement;
+	private SQL_Request_Caller_Receive_DB_Query_Lien_Attachement sqlRequestCallerReceiveDBQueryLienAttachement;
+	private SQL_Request_Caller_Receive_Query_Int_Lien_Attachement sqlRequestCallerReceiveQueryIntLienAttachement;
+
+	public Serveur_Detail() throws ExceptionMauvaisLien {
 		super();
 
-		this.sqlRequest = new SQL_Request(null);
+		this.setNom("Serveur_Detail");
+		this.sqlRequest = new SQL_Request();
 		this.clearenceRequest = new Clearence_Request();
 		this.securityQuery = new Security_Query();
 
@@ -29,15 +55,18 @@ public class Serveur_Detail extends Configuration {
 		this.database = new Database();
 		this.securityManager = new Security_Manager();
 
-		if (null != connectionManager) {
-			this.connectionManager = connectionManager;
-		}
-		if (null != database) {
-			this.database = database;
-		}
-		if (null != securityManager) {
-			this.securityManager = securityManager;
-		}
+		this.sendDBQueryLienAttachement = new Send_DB_Query_Lien_Attachement();
+		this.sendSecurityCheckLienAttachement = new Send_Security_Check_Lien_Attachement();
+		this.sendQueryIntLienAttachement = new Send_Query_Int_Lien_Attachement();
+		this.sendSecurityManagementLienAttachement = new Send_Security_Management_Lien_Attachement();
+		this.sendCQueryLienAttachement = new Send_C_Query_Lien_Attachement();
+		this.sendSecurityAuthLienAttachement = new Send_Security_Auth_Lien_Attachement();
+		this.clearenceRequestCallerReceiveSecurityAuthLienAttachement = new Clearence_Request_Caller_Receive_Security_Auth_Lien_Attachement();
+		this.clearenceRequestCallerReceiveSecurityCheckLienAttachement = new Clearence_Request_Caller_Receive_Security_Check_Lien_Attachement();
+		this.securityQueryReceiveCQueryLienAttachement = new Security_Query_Receive_C_Query_Lien_Attachement();
+		this.securityManagementLienAttachement = new Security_Query_Receive_Security_Management_Lien_Attachement();
+		this.sqlRequestCallerReceiveDBQueryLienAttachement = new SQL_Request_Caller_Receive_DB_Query_Lien_Attachement();
+		this.sqlRequestCallerReceiveQueryIntLienAttachement = new SQL_Request_Caller_Receive_Query_Int_Lien_Attachement();
 
 		this.addObjetArchitectural(this.connectionManager);
 		this.addObjetArchitectural(this.database);
@@ -45,6 +74,31 @@ public class Serveur_Detail extends Configuration {
 		this.addObjetArchitectural(this.sqlRequest);
 		this.addObjetArchitectural(this.clearenceRequest);
 		this.addObjetArchitectural(this.securityQuery);
+
+		this.addLienAttachement(clearenceRequestCallerReceiveSecurityAuthLienAttachement);
+		this.addLienAttachement(clearenceRequestCallerReceiveSecurityCheckLienAttachement);
+		this.addLienAttachement(securityManagementLienAttachement);
+		this.addLienAttachement(securityQueryReceiveCQueryLienAttachement);
+		this.addLienAttachement(sendCQueryLienAttachement);
+		this.addLienAttachement(sendDBQueryLienAttachement);
+		this.addLienAttachement(sendQueryIntLienAttachement);
+		this.addLienAttachement(sendSecurityAuthLienAttachement);
+		this.addLienAttachement(sendSecurityCheckLienAttachement);
+		this.addLienAttachement(sendSecurityManagementLienAttachement);
+		this.addLienAttachement(sqlRequestCallerReceiveDBQueryLienAttachement);
+		this.addLienAttachement(sqlRequestCallerReceiveQueryIntLienAttachement);
+	}
+
+	public Connection_Manager getConnectionManager() {
+		return connectionManager;
+	}
+
+	public Database getDatabase() {
+		return database;
+	}
+
+	public Security_Manager getSecurityManager() {
+		return securityManager;
 	}
 
 }

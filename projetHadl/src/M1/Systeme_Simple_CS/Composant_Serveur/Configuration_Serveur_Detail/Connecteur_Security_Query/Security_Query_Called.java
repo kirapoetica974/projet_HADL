@@ -6,7 +6,7 @@ public class Security_Query_Called extends Role_Fourni {
 
 	public Security_Query_Called() {
 		super();
-		super.setNom("Security_Query_Called");
+		this.setNom("Security_Query_Called");
 	}
 
 }

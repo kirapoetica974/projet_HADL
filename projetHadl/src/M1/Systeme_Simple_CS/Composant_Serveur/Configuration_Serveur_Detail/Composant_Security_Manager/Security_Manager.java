@@ -1,5 +1,7 @@
 package M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Security_Manager;
 
+import M2.ExceptionDonneeIncorrecte;
+import M2.ObserverConfig;
 import M2.Objet_Architectural.Configuration.PackageComposant.Composant;
 
 public class Security_Manager extends Composant {
@@ -25,8 +27,14 @@ public class Security_Manager extends Composant {
 	}
 
 	@Override
-	public void transmetDonnee() {
-		// TODO Auto-generated method stub
+	public void transmetDonnee() throws ExceptionDonneeIncorrecte {
+		ObserverConfig obs = ObserverConfig.getInstance();
+		if (null != receiveSecurityAuth.getElmtStocke()) {
+			System.out.println("je passe par Security_Manager");
+			this.sendCQuery.setElmtStocke(receiveSecurityAuth.getElmtStocke());
+			receiveSecurityAuth.setElmtStocke(null);
+			obs.notifierSortieDonnee(sendCQuery);
+		}
 
 	}
 

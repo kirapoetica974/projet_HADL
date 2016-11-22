@@ -7,17 +7,15 @@ import M2.Objet_Architectural.Interface_Communication.Lien_Binding;
 
 public class Serveur_Fourni_Serveur_Detail_Lien_Binding extends Lien_Binding {
 
-	private static Serveur_Fourni serveurFourni;
-	private static Serveur_Detail_Fourni serveurDetailFourni;
+	private static Serveur_Fourni serveurFourni = new Serveur_Fourni();
+	private static Serveur_Detail_Fourni serveurDetailFourni = new Serveur_Detail_Fourni();
 
 	public Serveur_Fourni_Serveur_Detail_Lien_Binding()
 			throws ExceptionMauvaisLien {
 		super(serveurFourni, serveurDetailFourni);
 
-		this.serveurFourni = new Serveur_Fourni();
 		this.setPortComposantFourni(serveurFourni);
 
-		this.serveurDetailFourni = new Serveur_Detail_Fourni();
 		this.setPortConfigurationFourni(serveurDetailFourni);
 	}
 

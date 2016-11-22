@@ -6,7 +6,7 @@ public class Send_DB_Query extends Port_Composant_Requis {
 
 	public Send_DB_Query() {
 		super();
-		super.setNom("Send_DB_Query");
+		this.setNom("Send_DB_Query");
 	}
 
 }

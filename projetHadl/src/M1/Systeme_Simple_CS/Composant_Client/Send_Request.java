@@ -6,6 +6,6 @@ public class Send_Request extends Port_Composant_Requis {
 
 	public Send_Request() {
 		super();
-		super.setNom("Send_Request");
+		this.setNom("Send_Request");
 	}
 }

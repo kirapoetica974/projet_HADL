@@ -9,6 +9,7 @@ public class Security_Query extends Connecteur_Explicite {
 	public Security_Query() {
 		super();
 
+		this.setNom("Security_Query");
 		this.securityQueryGlue = new Security_Query_Glue();
 		this.setGlue(securityQueryGlue);
 	}

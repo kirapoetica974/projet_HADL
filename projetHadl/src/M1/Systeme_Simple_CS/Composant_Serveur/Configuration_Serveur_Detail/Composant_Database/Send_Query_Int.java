@@ -6,7 +6,7 @@ public class Send_Query_Int extends Port_Composant_Requis {
 
 	public Send_Query_Int() {
 		super();
-		super.setNom("Send_Query_Int");
+		this.setNom("Send_Query_Int");
 	}
 
 }

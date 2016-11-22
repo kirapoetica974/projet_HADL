@@ -6,6 +6,6 @@ public class Send_Serveur extends Port_Composant_Requis {
 
 	public Send_Serveur() {
 		super();
-		super.setNom("Send_Serveur");
+		this.setNom("Send_Serveur");
 	}
 }

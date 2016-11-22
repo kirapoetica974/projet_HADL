@@ -3,6 +3,7 @@ package M2.Objet_Architectural;
 import java.util.ArrayList;
 import java.util.List;
 
+import M2.ExceptionDonneeIncorrecte;
 import M2.Objet_Architectural.Interface_Communication.Interface;
 
 /**
@@ -60,7 +61,9 @@ public abstract class Objet_Architectural {
 
 	/**
 	 * Méthode qui permet de transmettre une donnée
+	 * 
+	 * @throws ExceptionDonneeIncorrecte
 	 */
-	public abstract void transmetDonnee();
+	public abstract void transmetDonnee() throws ExceptionDonneeIncorrecte;
 
 }

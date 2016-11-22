@@ -6,7 +6,7 @@ public class Rpc_Caller extends Role_Requis {
 
 	public Rpc_Caller() {
 		super();
-		super.setNom("Rpc_Caller");
+		this.setNom("Rpc_Caller");
 	}
 
 }

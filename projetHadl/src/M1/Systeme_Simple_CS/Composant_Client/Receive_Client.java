@@ -6,7 +6,7 @@ public class Receive_Client extends Port_Composant_Fourni {
 
 	public Receive_Client() {
 		super();
-		super.setNom("Receive_Client");
+		this.setNom("Receive_Client");
 	}
 
 }

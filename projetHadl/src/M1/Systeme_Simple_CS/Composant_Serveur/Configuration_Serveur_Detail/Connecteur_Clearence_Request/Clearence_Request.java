@@ -8,6 +8,7 @@ public class Clearence_Request extends Connecteur_Explicite {
 
 	public Clearence_Request() {
 		super();
+		this.setNom("Clearence_Request");
 		this.clearenceRequestGlue = new Clearence_Request_Glue();
 		this.setGlue(this.clearenceRequestGlue);
 	}

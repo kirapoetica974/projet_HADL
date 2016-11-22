@@ -6,9 +6,10 @@ public class SQL_Request extends Connecteur_Explicite {
 
 	private SQL_Request_Glue sqlRequestGlue;
 
-	public SQL_Request(SQL_Request_Glue sqlRequestGlue) {
+	public SQL_Request() {
 		super();
 
+		this.setNom("SQL_Request");
 		this.sqlRequestGlue = new SQL_Request_Glue();
 		this.setGlue(sqlRequestGlue);
 	}

@@ -6,6 +6,6 @@ public class Serveur_Requis extends Port_Composant_Requis {
 
 	public Serveur_Requis() {
 		super();
-		super.setNom("Serveur_Requis");
+		this.setNom("Serveur_Requis");
 	}
 }

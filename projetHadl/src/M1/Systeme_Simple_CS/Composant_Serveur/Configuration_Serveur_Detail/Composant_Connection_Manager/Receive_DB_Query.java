@@ -6,7 +6,7 @@ public class Receive_DB_Query extends Port_Composant_Fourni {
 
 	public Receive_DB_Query() {
 		super();
-		super.setNom("Receive_DB_Query");
+		this.setNom("Receive_DB_Query");
 	}
 
 }

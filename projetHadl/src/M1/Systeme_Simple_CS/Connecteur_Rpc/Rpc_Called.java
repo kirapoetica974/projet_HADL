@@ -6,7 +6,7 @@ public class Rpc_Called extends Role_Fourni {
 
 	public Rpc_Called() {
 		super();
-		super.setNom("Rpc_Called");
+		this.setNom("Rpc_Called");
 	}
 
 }

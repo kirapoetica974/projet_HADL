@@ -6,7 +6,7 @@ public class External_Socket_Requis extends Port_Composant_Requis {
 
 	public External_Socket_Requis() {
 		super();
-		super.setNom("External_Socket_Requis");
+		this.setNom("External_Socket_Requis");
 	}
 
 }
