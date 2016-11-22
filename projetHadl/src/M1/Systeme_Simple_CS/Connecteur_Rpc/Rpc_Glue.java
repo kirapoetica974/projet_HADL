@@ -4,53 +4,60 @@ import M2.Objet_Architectural.Configuration.PackageConnecteur.Glue;
 
 public class Rpc_Glue extends Glue {
 
-	private Rpc_Caller rpcCaller;
-	private Rpc_Called rpcCalled;
+	private Rpc_Caller_Client rpcCallerClient;
+	private Rpc_Called_Serveur rpcCalledServeur;
+	private Rpc_Caller_Serveur rpcCallerServeur;
+	private Rpc_Called_Client rpcCalledClient;
 
 	/**
-	 * @param rpcCaller
-	 * @param rpcCalled
+	 * @param rpcCallerClient
+	 * @param rpcCalledServeur
 	 */
 	public Rpc_Glue() {
 		super();
 
-		this.rpcCaller = new Rpc_Caller();
-		this.rpcCalled = new Rpc_Called();
+		this.rpcCallerClient = new Rpc_Caller_Client();
+		this.rpcCalledServeur = new Rpc_Called_Serveur();
+		this.rpcCalledClient = new Rpc_Called_Client();
+		this.rpcCallerServeur = new Rpc_Caller_Serveur();
 
-		this.addRoleFourni(this.rpcCalled);
-		this.addRoleRequis(this.rpcCaller);
+		this.addRoleFourni(this.rpcCalledServeur);
+		this.addRoleRequis(this.rpcCallerClient);
+		this.addRoleFourni(this.rpcCalledClient);
+		this.addRoleRequis(rpcCallerServeur);
 
-		this.addLienFourniRequis(this.rpcCalled, this.rpcCaller);
+		this.addLienFourniRequis(this.rpcCalledServeur, this.rpcCallerClient);
+		this.addLienFourniRequis(this.rpcCalledClient, this.rpcCallerServeur);
 	}
 
 	/**
 	 * @return the rpcCaller
 	 */
-	public Rpc_Caller getRpcCaller() {
-		return rpcCaller;
+	public Rpc_Caller_Client getRpcCaller() {
+		return rpcCallerClient;
 	}
 
 	/**
 	 * @param rpcCaller
 	 *            the rpcCaller to set
 	 */
-	public void setRpcCaller(Rpc_Caller rpcCaller) {
-		this.rpcCaller = rpcCaller;
+	public void setRpcCaller(Rpc_Caller_Client rpcCaller) {
+		this.rpcCallerClient = rpcCaller;
 	}
 
 	/**
 	 * @return the rpcCalled
 	 */
-	public Rpc_Called getRpcCalled() {
-		return rpcCalled;
+	public Rpc_Called_Serveur getRpcCalled() {
+		return rpcCalledServeur;
 	}
 
 	/**
 	 * @param rpcCalled
 	 *            the rpcCalled to set
 	 */
-	public void setRpcCalled(Rpc_Called rpcCalled) {
-		this.rpcCalled = rpcCalled;
+	public void setRpcCalled(Rpc_Called_Serveur rpcCalled) {
+		this.rpcCalledServeur = rpcCalled;
 	}
 
 }

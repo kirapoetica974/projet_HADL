@@ -2,11 +2,10 @@ package M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Conn
 
 import M2.Objet_Architectural.Interface_Communication.Role_Fourni;
 
-public class Clearence_Request_Called extends Role_Fourni {
+public class Clearence_Request_Called_Security_Manager extends Role_Fourni {
 
-	public Clearence_Request_Called() {
+	public Clearence_Request_Called_Security_Manager() {
 		super();
-		this.setNom("Clearence_Request_Called");
+		this.setNom("Clearence_Request_Called_Security_Manager");
 	}
-
 }

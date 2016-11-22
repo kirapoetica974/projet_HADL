@@ -172,7 +172,6 @@ public class ObserverConfig {
 					for (Role_Fourni roleFourni : listeRoleFourni) {
 						if (p.getNom().equals(roleFourni.getNom())) {
 							roleFourni.setElmtStocke(p.getElmtStocke());
-							;
 							glue.transmetDonnee(p);
 							interfaceCommunicationTrouve = true;
 							break;

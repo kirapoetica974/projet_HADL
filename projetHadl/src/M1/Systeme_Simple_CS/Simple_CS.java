@@ -68,4 +68,5 @@ public class Simple_CS extends Configuration {
 	public Rpc getRpc() {
 		return rpc;
 	}
+
 }

@@ -6,7 +6,7 @@ import M2.Objet_Architectural.Interface_Communication.Lien_Attachement;
 
 public class Rpc_Serveur_Lien_Attachement extends Lien_Attachement {
 
-	private static Rpc_Caller rpcCaller = new Rpc_Caller();
+	private static Rpc_Caller_Serveur rpcCaller = new Rpc_Caller_Serveur();
 	private static Receive_Request receiveRequest = new Receive_Request();
 
 	public Rpc_Serveur_Lien_Attachement() throws ExceptionMauvaisLien {
