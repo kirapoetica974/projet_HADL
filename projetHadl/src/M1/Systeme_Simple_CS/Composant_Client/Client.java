@@ -1,8 +1,10 @@
 package M1.Systeme_Simple_CS.Composant_Client;
 
+import M1.Systeme_Simple_CS.Simple_CS;
 import M2.ExceptionDonneeIncorrecte;
-import M2.ObserverConfig;
+import M2.MauvaiseConfigurationException;
 import M2.Objet_Architectural.Configuration.PackageComposant.Composant;
+import M2.Objet_Architectural.Interface_Communication.ExceptionMauvaisLien;
 
 public class Client extends Composant {
 
@@ -24,10 +26,11 @@ public class Client extends Composant {
 
 	}
 
-	public void envoyerDonnee(String s) throws ExceptionDonneeIncorrecte {
+	public void envoyerDonnee(String s) throws ExceptionDonneeIncorrecte,
+			MauvaiseConfigurationException, ExceptionMauvaisLien {
 		sendRequest.setElmtStocke(s);
 		System.out.println("Client : j'envoie une donnee 'blabla' ");
-		ObserverConfig.getInstance().notifierSortieDonnee(sendRequest);
+		Simple_CS.getInstance().getObserver().notifierSortieDonnee(sendRequest);
 	}
 
 	@Override

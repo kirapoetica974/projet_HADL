@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import M2.ExceptionDonneeIncorrecte;
+import M2.MauvaiseConfigurationException;
+import M2.Objet_Architectural.Interface_Communication.ExceptionMauvaisLien;
 import M2.Objet_Architectural.Interface_Communication.Interface;
 
 /**
@@ -64,6 +66,7 @@ public abstract class Objet_Architectural {
 	 * 
 	 * @throws ExceptionDonneeIncorrecte
 	 */
-	public abstract void transmetDonnee() throws ExceptionDonneeIncorrecte;
+	public abstract void transmetDonnee() throws ExceptionDonneeIncorrecte,
+			MauvaiseConfigurationException, ExceptionMauvaisLien;
 
 }

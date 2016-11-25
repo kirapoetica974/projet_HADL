@@ -7,7 +7,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import M2.ExceptionDonneeIncorrecte;
+import M2.MauvaiseConfigurationException;
 import M2.ObserverConfig;
+import M2.Objet_Architectural.Interface_Communication.ExceptionMauvaisLien;
 import M2.Objet_Architectural.Interface_Communication.Interface;
 import M2.Objet_Architectural.Interface_Communication.Role_Fourni;
 import M2.Objet_Architectural.Interface_Communication.Role_Requis;
@@ -96,10 +98,11 @@ public class Glue {
 		this.liensFourniRequis.put(roleFourni, roleRequis);
 	}
 
-	public void transmetDonnee(Interface p) throws ExceptionDonneeIncorrecte {
+	public void transmetDonnee(Interface p, ObserverConfig obs)
+			throws ExceptionDonneeIncorrecte, MauvaiseConfigurationException,
+			ExceptionMauvaisLien {
 		logger.log(Level.INFO, "La donnée arrive dans la glue "
 				+ this.getClass().getName());
-		ObserverConfig obs = ObserverConfig.getInstance();
 
 		// La glue ne fait rien que transmettre la donnée
 		for (Role_Fourni mapKey : liensFourniRequis.keySet()) {

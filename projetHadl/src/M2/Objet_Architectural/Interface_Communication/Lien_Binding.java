@@ -1,6 +1,14 @@
 package M2.Objet_Architectural.Interface_Communication;
 
-public class Lien_Binding {
+import java.util.logging.Logger;
+
+import M2.ExceptionDonneeIncorrecte;
+import M2.MauvaiseConfigurationException;
+
+public abstract class Lien_Binding {
+
+	private final static Logger logger = Logger.getLogger(Logger.class
+			.getName());
 
 	private Port_Composant_Fourni portComposantFourni;
 
@@ -105,4 +113,8 @@ public class Lien_Binding {
 			Port_Configuration_Requis portConfigurationRequis) {
 		this.portConfigurationRequis = portConfigurationRequis;
 	}
+
+	public abstract void transmetDonnee() throws ExceptionDonneeIncorrecte,
+			MauvaiseConfigurationException, ExceptionMauvaisLien;
+
 }

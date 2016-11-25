@@ -7,7 +7,7 @@ import M2.Objet_Architectural.Interface_Communication.Lien_Attachement;
 public class SQL_Request_Caller_Receive_DB_Query_Lien_Attachement extends
 		Lien_Attachement {
 
-	private static SQL_Request_Caller sqlRequestCaller = new SQL_Request_Caller();
+	private static SQL_Request_Caller_Connection_Manager sqlRequestCaller = new SQL_Request_Caller_Connection_Manager();
 	private static Receive_DB_Query receiveDBQuery = new Receive_DB_Query();
 
 	public SQL_Request_Caller_Receive_DB_Query_Lien_Attachement()

@@ -1,5 +1,7 @@
 package M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail;
 
+import M1.Systeme_Simple_CS.Serveur_Fourni_Serveur_Detail_Lien_Binding;
+import M1.Systeme_Simple_CS.Serveur_Requis_Serveur_Detail_Lien_Binding;
 import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Connection_Manager.Connection_Manager;
 import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Connection_Manager.Send_DB_Query_Lien_Attachement;
 import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Connection_Manager.Send_Security_Check_Lien_Attachement;
@@ -18,10 +20,16 @@ import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Conne
 import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Connecteur_Security_Query.Security_Query;
 import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Connecteur_Security_Query.Security_Query_Receive_C_Query_Lien_Attachement;
 import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Connecteur_Security_Query.Security_Query_Receive_Security_Management_Lien_Attachement;
+import M2.ObserverConfig;
 import M2.Objet_Architectural.Configuration.Configuration;
 import M2.Objet_Architectural.Interface_Communication.ExceptionMauvaisLien;
 
 public class Serveur_Detail extends Configuration {
+
+	// Singleton
+	private static Serveur_Detail serveurDetailInstance;
+
+	public ObserverConfig observer;
 
 	private Connection_Manager connectionManager;
 	private Database database;
@@ -43,8 +51,15 @@ public class Serveur_Detail extends Configuration {
 	private SQL_Request_Caller_Receive_DB_Query_Lien_Attachement sqlRequestCallerReceiveDBQueryLienAttachement;
 	private SQL_Request_Caller_Receive_Query_Int_Lien_Attachement sqlRequestCallerReceiveQueryIntLienAttachement;
 
-	public Serveur_Detail() throws ExceptionMauvaisLien {
+	private Serveur_Detail_Fourni_Connection_Manager_Lien_Binding serveurDetailFourniConnectionManagerLienBinding;
+	private Serveur_Detail_Requis_Connection_Manager_Lien_Binding serveurDetailRequisConnectionManagerLienBinding;
+	private Serveur_Fourni_Serveur_Detail_Lien_Binding serveurFourniServeurDetailLienBinding;
+	private Serveur_Requis_Serveur_Detail_Lien_Binding serveurRequisServeurDetailLienBinding;
+
+	private Serveur_Detail() throws ExceptionMauvaisLien {
 		super();
+
+		this.observer = new ObserverConfig(this);
 
 		this.setNom("Serveur_Detail");
 		this.sqlRequest = new SQL_Request();
@@ -68,6 +83,11 @@ public class Serveur_Detail extends Configuration {
 		this.sqlRequestCallerReceiveDBQueryLienAttachement = new SQL_Request_Caller_Receive_DB_Query_Lien_Attachement();
 		this.sqlRequestCallerReceiveQueryIntLienAttachement = new SQL_Request_Caller_Receive_Query_Int_Lien_Attachement();
 
+		this.serveurDetailFourniConnectionManagerLienBinding = new Serveur_Detail_Fourni_Connection_Manager_Lien_Binding();
+		this.serveurDetailRequisConnectionManagerLienBinding = new Serveur_Detail_Requis_Connection_Manager_Lien_Binding();
+		this.serveurFourniServeurDetailLienBinding = new Serveur_Fourni_Serveur_Detail_Lien_Binding();
+		this.serveurRequisServeurDetailLienBinding = new Serveur_Requis_Serveur_Detail_Lien_Binding();
+
 		this.addObjetArchitectural(this.connectionManager);
 		this.addObjetArchitectural(this.database);
 		this.addObjetArchitectural(this.securityManager);
@@ -87,6 +107,18 @@ public class Serveur_Detail extends Configuration {
 		this.addLienAttachement(sendSecurityManagementLienAttachement);
 		this.addLienAttachement(sqlRequestCallerReceiveDBQueryLienAttachement);
 		this.addLienAttachement(sqlRequestCallerReceiveQueryIntLienAttachement);
+
+		this.addLienBinding(serveurDetailFourniConnectionManagerLienBinding);
+		this.addLienBinding(serveurDetailRequisConnectionManagerLienBinding);
+		this.addLienBinding(serveurFourniServeurDetailLienBinding);
+		this.addLienBinding(serveurRequisServeurDetailLienBinding);
+	}
+
+	public static Serveur_Detail getInstance() throws ExceptionMauvaisLien {
+		if (null == serveurDetailInstance) {
+			serveurDetailInstance = new Serveur_Detail();
+		}
+		return serveurDetailInstance;
 	}
 
 	public Connection_Manager getConnectionManager() {
@@ -99,6 +131,10 @@ public class Serveur_Detail extends Configuration {
 
 	public Security_Manager getSecurityManager() {
 		return securityManager;
+	}
+
+	public ObserverConfig getObserver() {
+		return observer;
 	}
 
 }

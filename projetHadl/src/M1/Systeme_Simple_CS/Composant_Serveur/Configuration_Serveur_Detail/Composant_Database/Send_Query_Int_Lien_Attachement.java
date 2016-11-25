@@ -1,13 +1,13 @@
 package M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Database;
 
-import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Connecteur_SQL_Request.SQL_Request_Called;
+import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Connecteur_SQL_Request.SQL_Request_Called_Database;
 import M2.Objet_Architectural.Interface_Communication.ExceptionMauvaisLien;
 import M2.Objet_Architectural.Interface_Communication.Lien_Attachement;
 
 public class Send_Query_Int_Lien_Attachement extends Lien_Attachement {
 
 	private static Send_Query_Int sendQueryInt = new Send_Query_Int();
-	private static SQL_Request_Called sqlRequestCalled = new SQL_Request_Called();
+	private static SQL_Request_Called_Database sqlRequestCalled = new SQL_Request_Called_Database();
 
 	public Send_Query_Int_Lien_Attachement() throws ExceptionMauvaisLien {
 		super(sqlRequestCalled, sendQueryInt);

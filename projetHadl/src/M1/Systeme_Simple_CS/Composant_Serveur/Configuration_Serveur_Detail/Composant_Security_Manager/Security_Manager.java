@@ -1,8 +1,11 @@
 package M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Security_Manager;
 
+import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Serveur_Detail;
 import M2.ExceptionDonneeIncorrecte;
+import M2.MauvaiseConfigurationException;
 import M2.ObserverConfig;
 import M2.Objet_Architectural.Configuration.PackageComposant.Composant;
+import M2.Objet_Architectural.Interface_Communication.ExceptionMauvaisLien;
 
 public class Security_Manager extends Composant {
 
@@ -27,13 +30,19 @@ public class Security_Manager extends Composant {
 	}
 
 	@Override
-	public void transmetDonnee() throws ExceptionDonneeIncorrecte {
-		ObserverConfig obs = ObserverConfig.getInstance();
+	public void transmetDonnee() throws ExceptionDonneeIncorrecte,
+			MauvaiseConfigurationException, ExceptionMauvaisLien {
+		ObserverConfig obs = Serveur_Detail.getInstance().getObserver();
 		if (null != receiveSecurityAuth.getElmtStocke()) {
 			System.out.println("je passe par Security_Manager");
 			this.sendCQuery.setElmtStocke(receiveSecurityAuth.getElmtStocke());
 			receiveSecurityAuth.setElmtStocke(null);
 			obs.notifierSortieDonnee(sendCQuery);
+		} else if (null != receiveCQuery.getElmtStocke()) {
+			System.out.println("je passe par Security_Manager");
+			this.sendSecurityAuth.setElmtStocke(receiveCQuery.getElmtStocke());
+			receiveCQuery.setElmtStocke(null);
+			obs.notifierSortieDonnee(sendSecurityAuth);
 		}
 
 	}

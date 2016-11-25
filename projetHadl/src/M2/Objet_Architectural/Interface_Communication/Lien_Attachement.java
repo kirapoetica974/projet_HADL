@@ -4,6 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import M2.ExceptionDonneeIncorrecte;
+import M2.MauvaiseConfigurationException;
 import M2.ObserverConfig;
 
 /**
@@ -110,8 +111,9 @@ public class Lien_Attachement {
 		this.portComposantRequis = portComposantRequis;
 	}
 
-	public void transmetDonnee() throws ExceptionDonneeIncorrecte {
-		ObserverConfig obs = ObserverConfig.getInstance();
+	public void transmetDonnee(ObserverConfig obs)
+			throws ExceptionDonneeIncorrecte, MauvaiseConfigurationException,
+			ExceptionMauvaisLien {
 		logger.log(Level.INFO, "la donnée est dans le lien attachement "
 				+ this.getClass().getName());
 		String donnee = null;
@@ -120,14 +122,14 @@ public class Lien_Attachement {
 			if (donnee != null) {
 				this.roleFourni.setElmtStocke(donnee);
 				this.portComposantRequis.setElmtStocke(null);
-				obs.notifierEntreeDonnee(this.roleFourni);
+				obs.notifierEntreeDonnee(this.roleFourni, donnee);
 			}
 		} else if (this.portComposantFourni != null && this.roleRequis != null) {
 			donnee = this.roleRequis.getElmtStocke();
 			if (donnee != null) {
 				this.portComposantFourni.setElmtStocke(donnee);
 				this.roleRequis.setElmtStocke(null);
-				obs.notifierEntreeDonnee(this.portComposantFourni);
+				obs.notifierEntreeDonnee(this.portComposantFourni, donnee);
 			}
 		}
 
