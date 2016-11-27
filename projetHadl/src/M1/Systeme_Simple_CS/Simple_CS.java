@@ -3,8 +3,10 @@ package M1.Systeme_Simple_CS;
 import M1.Systeme_Simple_CS.Composant_Client.Client;
 import M1.Systeme_Simple_CS.Composant_Client.Client_Rpc_Lien_Attachement;
 import M1.Systeme_Simple_CS.Composant_Serveur.Serveur;
+import M1.Systeme_Simple_CS.Composant_Serveur.Serveur_Rpc_Lien_Attachement;
 import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Serveur_Detail;
 import M1.Systeme_Simple_CS.Connecteur_Rpc.Rpc;
+import M1.Systeme_Simple_CS.Connecteur_Rpc.Rpc_Client_Lien_Attachement;
 import M1.Systeme_Simple_CS.Connecteur_Rpc.Rpc_Serveur_Lien_Attachement;
 import M2.ObserverConfig;
 import M2.Objet_Architectural.Configuration.Configuration;
@@ -24,6 +26,8 @@ public class Simple_CS extends Configuration {
 	private Rpc rpc;
 	private Client_Rpc_Lien_Attachement clientRpcLienAttachement;
 	private Rpc_Serveur_Lien_Attachement rpcServeurLienAttachement;
+	private Serveur_Rpc_Lien_Attachement serveurRpcLienAttachement;
+	private Rpc_Client_Lien_Attachement rpcClientLienAttachement;
 
 	private Simple_CS_Fourni_Client_Lien_Binding simpleCSFourniClientLienBinding;
 	private Simple_CS_Requis_Client_Lien_Binding simpleCSRequisClientLienBinding;
@@ -44,6 +48,9 @@ public class Simple_CS extends Configuration {
 		this.rpc = new Rpc();
 		this.clientRpcLienAttachement = new Client_Rpc_Lien_Attachement();
 		this.rpcServeurLienAttachement = new Rpc_Serveur_Lien_Attachement();
+		this.rpcClientLienAttachement = new Rpc_Client_Lien_Attachement();
+		this.serveurRpcLienAttachement = new Serveur_Rpc_Lien_Attachement();
+
 		this.portSimpleCsEntree = new Simple_CS_Requis();
 		this.portSimpleCsSortie = new Simple_CS_Fourni();
 		this.serveurDetail = Serveur_Detail.getInstance();
@@ -69,6 +76,8 @@ public class Simple_CS extends Configuration {
 		// Ajout des lien attachement dans la liste des liens attachements
 		this.addLienAttachement(clientRpcLienAttachement);
 		this.addLienAttachement(rpcServeurLienAttachement);
+		this.addLienAttachement(rpcClientLienAttachement);
+		this.addLienAttachement(serveurRpcLienAttachement);
 
 		// Ajout des liens binding dans la liste des liens attachements
 		this.addLienBinding(simpleCSFourniClientLienBinding);

@@ -1,5 +1,6 @@
 package M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail;
 
+import M1.Systeme_Simple_CS.Simple_CS;
 import M1.Systeme_Simple_CS.Composant_Serveur.Configuration_Serveur_Detail.Composant_Connection_Manager.External_Socket_Fourni;
 import M2.ExceptionDonneeIncorrecte;
 import M2.MauvaiseConfigurationException;
@@ -27,7 +28,7 @@ public class Serveur_Detail_Fourni_Connection_Manager_Lien_Binding extends
 		String donnee = this.externalSocketFourni.getElmtStocke();
 		this.serveurDetailFourni.setElmtStocke(donnee);
 		this.externalSocketFourni.setElmtStocke(null);
-		Serveur_Detail.getInstance().getObserver()
+		Simple_CS.getInstance().getObserver()
 				.notifierEntreeDonnee(this.serveurDetailFourni, donnee);
 
 	}

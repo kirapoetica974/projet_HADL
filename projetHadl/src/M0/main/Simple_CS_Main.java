@@ -13,7 +13,7 @@ public class Simple_CS_Main {
 		Simple_CS configClientServeur = Simple_CS.getInstance();
 		// ObserverConfig observer = new ObserverConfig(configClientServeur);
 
-		configClientServeur.getClient().envoyerDonnee("blabla");
+		configClientServeur.getClient().start();
 
 		/*
 		 * Serveur_Detail servDetail = new Serveur_Detail();
