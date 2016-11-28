@@ -11,15 +11,7 @@ public class Simple_CS_Main {
 			ExceptionMauvaisLien, MauvaiseConfigurationException {
 
 		Simple_CS configClientServeur = Simple_CS.getInstance();
-		// ObserverConfig observer = new ObserverConfig(configClientServeur);
-
 		configClientServeur.getClient().start();
-
-		/*
-		 * Serveur_Detail servDetail = new Serveur_Detail();
-		 * servDetail.getConnectionManager().envoyerDonnee(
-		 * "kjdnfkjdnsjkfnsdjkfnjsdnfnjks");
-		 */
 
 	}
 }

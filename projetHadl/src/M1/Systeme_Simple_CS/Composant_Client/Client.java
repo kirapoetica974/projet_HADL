@@ -15,13 +15,15 @@ public class Client extends Composant {
 			.getName());
 	private final static String IDENTIFICATION = "CONNEXION ";
 	private final static String AJOUT = "AJOUT ";
-	private final String CONNEXION_OK = "CONNEXION OK";
-	private final String CONNEXION_NON_OK = "CONNEXION NON OK";
-	private final String REQUETE = "REQUETE ";
+	private final static String CONNEXION_OK = "CONNEXION OK";
+	private final static String CONNEXION_NON_OK = "CONNEXION NON OK";
+	private final static String REQUETE = "REQUETE ";
+	private final static String INSCRIPTION = "INSCRIPTION";
 
 	private Send_Request sendRequest;
 	private Receive_Client receiveClient;
 	private Boolean connecte;
+	private Scanner sc;
 
 	/**
 	 * @param sendRequest
@@ -46,57 +48,132 @@ public class Client extends Composant {
 		Boolean quit = false;
 		while (!quit) {
 			String s = lancerMenu();
-			Scanner sc = new Scanner(System.in);
 			switch (s) {
 			case "1":
-				System.out.println("Saisir votre pseudo : ");
-				String pseudo = sc.nextLine();
-				System.out.println("Saisir votre mdp : ");
-				String mdp = sc.nextLine();
-
-				String identification = IDENTIFICATION + pseudo + "-" + mdp;
-				sendRequest.setElmtStocke(identification);
-				Simple_CS.getInstance().getObserver()
-						.notifierSortieDonnee(sendRequest);
+				connexion();
 				break;
 			case "2":
-				System.out.println("Saisir un type d'élément à afficher :");
-				String type = sc.nextLine();
-				sendRequest.setElmtStocke(type);
-
-				String requete = REQUETE + type;
-				sendRequest.setElmtStocke(requete);
-				Simple_CS.getInstance().getObserver()
-						.notifierSortieDonnee(sendRequest);
+				inscription();
 				break;
 			case "3":
-				if (connecte) {
-					System.out.println("Saisir un type d'élément :");
-					String typeElem = sc.nextLine();
-					System.out.println("Saisir un nom :");
-					String nom = sc.nextLine();
-					System.out.println("Saisir une quantite :");
-					String qte = sc.nextLine();
-					System.out.println("Saisir un prix :");
-					String prix = sc.nextLine();
-
-					String ajout = AJOUT + typeElem + "-" + nom + "-" + qte
-							+ "-" + prix;
-					sendRequest.setElmtStocke(ajout);
-					Simple_CS.getInstance().getObserver()
-							.notifierSortieDonnee(sendRequest);
-				} else {
-					System.out
-							.println("Vous devez vous connecter pour ajouter une donnée !");
-				}
+				afficherElements();
 				break;
 			case "4":
+				ajouterElement();
+				break;
+			case "5":
 				quit = true;
 				break;
 			default:
 				System.out.println("Choix incorrecte");
 				break;
 			}
+		}
+
+	}
+
+	/**
+	 * @throws ExceptionDonneeIncorrecte
+	 * @throws MauvaiseConfigurationException
+	 * @throws ExceptionMauvaisLien
+	 */
+	private void ajouterElement() throws ExceptionDonneeIncorrecte,
+			MauvaiseConfigurationException, ExceptionMauvaisLien {
+		if (connecte) {
+			sc = new Scanner(System.in);
+			System.out.println("Saisir un type d'élément :");
+			String typeElem = sc.nextLine();
+			System.out.println("Saisir un nom :");
+			String nom = sc.nextLine();
+			System.out.println("Saisir une quantite :");
+			String qte = sc.nextLine();
+			System.out.println("Saisir un prix :");
+			String prix = sc.nextLine();
+
+			if (!typeElem.isEmpty() && !nom.isEmpty() && !qte.isEmpty()
+					&& !prix.isEmpty()) {
+				String ajout = AJOUT + typeElem + "-" + nom + "-" + qte + "-"
+						+ prix;
+				sendRequest.setElmtStocke(ajout);
+				Simple_CS.getInstance().getObserver()
+						.notifierSortieDonnee(sendRequest);
+			} else {
+				System.out.println("Tous les champs sont obligatoires.");
+			}
+		} else {
+			System.out
+					.println("Vous devez vous connecter pour ajouter une donnée !");
+		}
+	}
+
+	/**
+	 * @return
+	 * @throws ExceptionDonneeIncorrecte
+	 * @throws MauvaiseConfigurationException
+	 * @throws ExceptionMauvaisLien
+	 */
+	private void afficherElements() throws ExceptionDonneeIncorrecte,
+			MauvaiseConfigurationException, ExceptionMauvaisLien {
+		sc = new Scanner(System.in);
+		System.out.println("Saisir un type d'élément à afficher :");
+		String type = sc.nextLine();
+		sendRequest.setElmtStocke(type);
+
+		String requete = REQUETE + type;
+		sendRequest.setElmtStocke(requete);
+		Simple_CS.getInstance().getObserver().notifierSortieDonnee(sendRequest);
+	}
+
+	/**
+	 * @return
+	 * @throws ExceptionDonneeIncorrecte
+	 * @throws MauvaiseConfigurationException
+	 * @throws ExceptionMauvaisLien
+	 */
+	private void inscription() throws ExceptionDonneeIncorrecte,
+			MauvaiseConfigurationException, ExceptionMauvaisLien {
+		sc = new Scanner(System.in);
+		System.out.println("Saisir votre nom : ");
+		String nomInsc = sc.nextLine();
+		System.out.println("Saisir votre prenom : ");
+		String prenom = sc.nextLine();
+		System.out.println("Saisir votre pseudo : ");
+		String pseudoInsc = sc.nextLine();
+		System.out.println("Saisir votre mdp : ");
+		String motPasse = sc.nextLine();
+
+		if (!nomInsc.isEmpty() && !prenom.isEmpty() && !pseudoInsc.isEmpty()
+				&& !motPasse.isEmpty()) {
+			String insc = INSCRIPTION + nomInsc + "-" + prenom + "-"
+					+ pseudoInsc + "-" + motPasse;
+			sendRequest.setElmtStocke(insc);
+			Simple_CS.getInstance().getObserver()
+					.notifierSortieDonnee(sendRequest);
+		} else {
+			System.out.println("Tous les champs sont obligatoires.");
+		}
+	}
+
+	/**
+	 * @return
+	 * @throws ExceptionDonneeIncorrecte
+	 * @throws MauvaiseConfigurationException
+	 * @throws ExceptionMauvaisLien
+	 */
+	private void connexion() throws ExceptionDonneeIncorrecte,
+			MauvaiseConfigurationException, ExceptionMauvaisLien {
+		sc = new Scanner(System.in);
+		System.out.println("Saisir votre pseudo : ");
+		String pseudo = sc.nextLine();
+		System.out.println("Saisir votre mdp : ");
+		String mdp = sc.nextLine();
+		if (!pseudo.isEmpty() && !mdp.isEmpty()) {
+			String identification = IDENTIFICATION + pseudo + "-" + mdp;
+			sendRequest.setElmtStocke(identification);
+			Simple_CS.getInstance().getObserver()
+					.notifierSortieDonnee(sendRequest);
+		} else {
+			System.out.println("Tous les champs sont obligatoires.");
 		}
 
 	}
@@ -116,14 +193,15 @@ public class Client extends Composant {
 
 	}
 
-	public String lancerMenu() {
-		Scanner sc = new Scanner(System.in);
+	private String lancerMenu() {
+		sc = new Scanner(System.in);
 		System.out.println("Veuillez choisir une option dans le menu : ");
 		System.out.println("1 : Connexion");
-		System.out.println("2 : Choisir un type d'élément à afficher");
+		System.out.println("2 : Inscription");
+		System.out.println("3 : Choisir un type d'élément à afficher");
 		System.out
-				.println("3 : Ajouter un élément à la base de donnée (connexion obligatoire)");
-		System.out.println("4 : Quitter");
+				.println("4 : Ajouter un élément à la base de donnée (connexion obligatoire)");
+		System.out.println("5 : Quitter");
 		return sc.nextLine();
 	}
 }
